@@ -9,6 +9,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Game Management/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/Editor/BaseAirplaneInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Controller/BaseRigidbodyController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/BaseAirplaneInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Player/Keys.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WarGames-Defcon-1/Code/Scripts/Service/Tags.cs" root0="FORCE_HIGHLIGHTING" />
