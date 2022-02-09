@@ -3,7 +3,10 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     public class BaseInput : MonoBehaviour {
-        [SerializeField] private InputKeys InputKeys = new InputKeys(
+        #region Variables
+        [SerializeField] protected InputKeys InputKeys = new(
+            "horizontal",
+            "vertical",
             KeyCode.W,
             KeyCode.S,
             KeyCode.A,
@@ -16,5 +19,30 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             KeyCode.Mouse0,
             KeyCode.Mouse1
             );
+
+        protected float horizontal, vertical;
+        #endregion
+
+
+
+        #region Builtin Methods
+
+        private void Update() {
+            HandleInputs();
+        }
+
+        #endregion
+
+
+
+        #region Custom Methods
+
+        private void HandleInputs() {
+            horizontal = UnityEngine.Input.GetAxis(InputKeys.horizontal);
+            vertical = UnityEngine.Input.GetAxis(InputKeys.vertical);
+        }
+
+        #endregion
+        
     }
 }

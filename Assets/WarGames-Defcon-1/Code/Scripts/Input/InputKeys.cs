@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     [Serializable] public struct InputKeys {
+        public string horizontal;
+        public string vertical;
+
         public KeyCode moveForward;
         public KeyCode moveBackward;
         public KeyCode moveLeft;
@@ -14,10 +17,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         public KeyCode pauseMenu;
         public KeyCode settingsMenu;
         public KeyCode mainAttack;
-        public KeyCode alternateAttack;
+        public KeyCode altAttack;
 
 
-        public InputKeys(KeyCode moveForward,
+        public InputKeys(string horizontal,
+                         string vertical,
+                         KeyCode moveForward,
                          KeyCode moveBackward,
                          KeyCode moveLeft,
                          KeyCode moveRight,
@@ -27,7 +32,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                          KeyCode pauseMenu,
                          KeyCode settingsMenu,
                          KeyCode mainAttack,
-                         KeyCode alternateAttack) {
+                         KeyCode altAttack) {
+            this.horizontal = horizontal;
+            this.vertical = vertical;
+            
             this.moveForward = moveForward;
             this.moveBackward = moveBackward;
             this.moveLeft = moveLeft;
@@ -38,7 +46,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             this.pauseMenu = pauseMenu;
             this.settingsMenu = settingsMenu;
             this.mainAttack = mainAttack;
-            this.alternateAttack = alternateAttack;
+            this.altAttack = altAttack;
         }
     }
 }

@@ -3,8 +3,9 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [RequireComponent(typeof(Rigidbody))]
-    public class RigidbodyController : MonoBehaviour {
+    public class RBController : MonoBehaviour {
         #region Variables
+        [SerializeField] private Transform com;
         protected Rigidbody rb;
         #endregion
 
