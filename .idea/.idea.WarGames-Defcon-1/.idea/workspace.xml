@@ -13,6 +13,7 @@
     <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Controllers/BaseRBController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Controllers/HelicopterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/KeyboardInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/Input.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/Editor/BaseAirplaneInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Controller/BaseRigidbodyController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -25,6 +26,7 @@
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/IWeapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/ProjectilePool/AdvancedProjectilePool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Controller/AirplaneController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/Editor/KeyboardInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Service/Tags.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/ProjectilePool/ProjectilePool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/WeaponController.cs" root0="SKIP_HIGHLIGHTING" />

@@ -4,9 +4,9 @@
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     public class BaseInput : MonoBehaviour {
         #region Variables
-        [SerializeField] protected InputKeys InputKeys = new(
-            "horizontal",
-            "vertical",
+        [SerializeField] protected Keys keys = new(
+            "Horizontal",
+            "Vertical",
             KeyCode.W,
             KeyCode.S,
             KeyCode.A,
@@ -25,24 +25,26 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
 
 
-        #region Builtin Methods
+        #region Properties
+        public float Horizontal => horizontal;
+        public float Vertical => vertical;
+        #endregion
+        
+        
 
+        #region Builtin Methods
         private void Update() {
             HandleInputs();
         }
-
         #endregion
 
 
 
         #region Custom Methods
-
-        private void HandleInputs() {
-            horizontal = UnityEngine.Input.GetAxis(InputKeys.horizontal);
-            vertical = UnityEngine.Input.GetAxis(InputKeys.vertical);
+        protected virtual void HandleInputs() {
+            horizontal = UnityEngine.Input.GetAxis(keys.horizontal);
+            vertical = UnityEngine.Input.GetAxis(keys.vertical);
         }
-
         #endregion
-        
     }
 }

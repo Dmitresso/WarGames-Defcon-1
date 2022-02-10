@@ -1,8 +1,10 @@
-﻿using WarGames_Defcon_1.Code.Scripts.Input;
+﻿using UnityEngine;
+using WarGames_Defcon_1.Code.Scripts.Input;
 using WarGames_Defcon_1.Code.Scripts.Weapon;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
+    [RequireComponent(typeof(InputController))]
     public class PlayerController : RBController {
         #region Variables
 
@@ -11,10 +13,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         
         private InputController input;
         private WeaponController weapon;
-
         #endregion
-        
-        
+
+
+
         #region Builtin Methods
 
         public override void Start() {

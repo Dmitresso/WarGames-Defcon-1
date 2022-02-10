@@ -13,6 +13,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         #endregion
 
 
+        #region Properties
+        public float Speed => speed;
+        #endregion
+        
+        
 
         #region Builtin Methods
         

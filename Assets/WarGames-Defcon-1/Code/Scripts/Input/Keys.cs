@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
-    [Serializable] public struct InputKeys {
+    [Serializable] public struct Keys {
         public string horizontal;
         public string vertical;
 
@@ -20,19 +20,19 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         public KeyCode altAttack;
 
 
-        public InputKeys(string horizontal,
-                         string vertical,
-                         KeyCode moveForward,
-                         KeyCode moveBackward,
-                         KeyCode moveLeft,
-                         KeyCode moveRight,
-                         KeyCode camera,
-                         KeyCode nextUnit,
-                         KeyCode commandMenu,
-                         KeyCode pauseMenu,
-                         KeyCode settingsMenu,
-                         KeyCode mainAttack,
-                         KeyCode altAttack) {
+        public Keys(string horizontal,
+                    string vertical,
+                    KeyCode moveForward,
+                    KeyCode moveBackward,
+                    KeyCode moveLeft,
+                    KeyCode moveRight,
+                    KeyCode camera,
+                    KeyCode nextUnit,
+                    KeyCode commandMenu,
+                    KeyCode pauseMenu,
+                    KeyCode settingsMenu,
+                    KeyCode mainAttack,
+                    KeyCode altAttack) {
             this.horizontal = horizontal;
             this.vertical = vertical;
             
