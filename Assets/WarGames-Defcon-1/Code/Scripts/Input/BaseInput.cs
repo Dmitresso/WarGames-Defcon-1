@@ -4,21 +4,8 @@
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     public class BaseInput : MonoBehaviour {
         #region Variables
-        [SerializeField] protected Keys keys = new(
-            "Horizontal",
-            "Vertical",
-            KeyCode.W,
-            KeyCode.S,
-            KeyCode.A,
-            KeyCode.D,
-            KeyCode.Q,
-            KeyCode.E,
-            KeyCode.C,
-            KeyCode.V,
-            KeyCode.F,
-            KeyCode.Mouse0,
-            KeyCode.Mouse1
-            );
+
+        [SerializeField] protected Keys keys;
 
         protected float horizontal, vertical;
         #endregion
@@ -33,6 +20,21 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         
 
         #region Builtin Methods
+        private void Awake() {
+            keys = new Keys(
+                "Horizontal",
+                "Vertical",
+                KeyCode.Q,
+                KeyCode.E,
+                KeyCode.C,
+                KeyCode.V,
+                KeyCode.F,
+                KeyCode.Mouse0,
+                KeyCode.Mouse1
+            );
+        }
+
+
         private void Update() {
             HandleInputs();
         }

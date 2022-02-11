@@ -7,10 +7,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         public string horizontal;
         public string vertical;
 
-        public KeyCode moveForward;
-        public KeyCode moveBackward;
-        public KeyCode moveLeft;
-        public KeyCode moveRight;
+
         public KeyCode camera;
         public KeyCode nextUnit;
         public KeyCode commandMenu;
@@ -22,10 +19,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         public Keys(string horizontal,
                     string vertical,
-                    KeyCode moveForward,
-                    KeyCode moveBackward,
-                    KeyCode moveLeft,
-                    KeyCode moveRight,
+
                     KeyCode camera,
                     KeyCode nextUnit,
                     KeyCode commandMenu,
@@ -36,10 +30,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             this.horizontal = horizontal;
             this.vertical = vertical;
             
-            this.moveForward = moveForward;
-            this.moveBackward = moveBackward;
-            this.moveLeft = moveLeft;
-            this.moveRight = moveRight;
             this.camera = camera;
             this.nextUnit = nextUnit;
             this.commandMenu = commandMenu;

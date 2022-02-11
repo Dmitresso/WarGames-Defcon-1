@@ -10,28 +10,31 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Game Management/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/WarGames-Defcon-1/Code/Scripts/Service/Tags.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Controllers/BaseRBController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Controllers/HelicopterController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/KeyboardInput.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/Input.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/Editor/BaseAirplaneInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Rotors/MainHelicopterRotor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Controller/BaseRigidbodyController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/InputController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/BaseAirplaneInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Player/Keys.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/BaseHelicopterInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/BaseProjectile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/BaseWeapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/IWeapon.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/ProjectilePool/AdvancedProjectilePool.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Controller/AirplaneController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/Editor/KeyboardInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Service/Tags.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/ProjectilePool/ProjectilePool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/WeaponController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/WeaponTypes/RapidFireWeapon.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/WeaponTypes/GatlingGunWeapon.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Engines/HelicopterEngine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Basketball/Assets/Scripts/Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Controllers/BaseRBController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Controllers/HelicopterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Characteristics/HelicopterCharacteristics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/KeyboardInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/Editor/BaseAirplaneInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/InputController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Input/BaseAirplaneInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/BaseHelicopterInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/ProjectilePool/AdvancedProjectilePool.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Airplane Physics in Unity 3D/Assets/AirplanePhysics/Code/Scripts/Controller/AirplaneController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Input/Editor/KeyboardInputEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Intro to Unity 3D Physics Helicopters/Assets/HelicopterPhysics/Code/Scripts/Weapon/ProjectilePool/ProjectilePool.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="24oRSiat5Q0Ir0wXnQqPh6cEXV1" />
   <component name="ProjectViewState">

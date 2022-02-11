@@ -16,13 +16,26 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         [SerializeField] private KeyboardInput keyboardInput;
         [SerializeField] private InputType inputType = InputType.Keyboard;
 
+
+        private float horizontal;
+        private float vertical;
+        
+        
         private bool cameraButton;
-        public bool CameraButton => cameraButton;
-        
-        
+
+
         [Header("Input Events")]
         public UnityEvent onCameraButtonPressed = new();
         #endregion
+
+
+        #region Properties
+        public float Horizontal => horizontal;
+        public float Vertical => vertical;
+        
+        public bool CameraButton => cameraButton;
+        #endregion
+        
 
 
         #region Builtin Methods
@@ -31,8 +44,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             if (keyboardInput) SetInput(inputType);
         }
 
+        
         private void Update() {
-            cameraButton = keyboardInput.cameraButton;
+            horizontal = keyboardInput.Horizontal;
+            vertical = keyboardInput.Vertical;
+            
+            
+            cameraButton = keyboardInput.CameraButton;
             if (cameraButton) onCameraButtonPressed?.Invoke();
         }
         #endregion

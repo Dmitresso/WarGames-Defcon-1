@@ -24,7 +24,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
 
         #region Custom Methods
-        public void UpdateWeapons(InputController input) {
+        public void UpdateWeapon(InputController input) {
             //if (!input.FireButton || !fireAllowed) return;
             //if (weapons.Count <= 0) return;
             //foreach (var weapon in weapons) weapon.FireWeapon();
