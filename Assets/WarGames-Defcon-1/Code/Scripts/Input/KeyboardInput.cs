@@ -41,7 +41,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             HandleCommandMenuButton();
             HandlePauseMenuButton();
             HandleSettingsMenuButton();
-            ClampInput();
+            ClampInputs();
         }
 
 
@@ -60,9 +60,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         }
 
 
-        protected virtual void ClampInput() {
+        protected virtual void ClampInputs() {
             
         }
         #endregion
+
+        public bool C1 { get; set; }
     }
 }

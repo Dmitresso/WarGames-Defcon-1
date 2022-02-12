@@ -15,13 +15,17 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         #region Variables
         [SerializeField] private KeyboardInput keyboardInput;
         [SerializeField] private InputType inputType = InputType.Keyboard;
-
-
+        
         private float horizontal;
         private float vertical;
         
-        
         private bool cameraButton;
+        private bool nextUnitButton;
+        private bool commandMenuButton;
+        private bool pauseMenuButton;
+        private bool settingsMenuButton;
+        private bool mainAttackButton;
+        private bool altAttackButton;
 
 
         [Header("Input Events")]
@@ -34,6 +38,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         public float Vertical => vertical;
         
         public bool CameraButton => cameraButton;
+        public bool NextUnitButton => nextUnitButton;
+        public bool CommandMenuButton => commandMenuButton;
+        public bool PauseMenuButton => pauseMenuButton;
+        public bool SettingsMenuButton => settingsMenuButton;
+        public bool MainAttackButton => mainAttackButton;
+        public bool AltAttackButton => altAttackButton;
         #endregion
         
 
@@ -46,18 +56,26 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         
         private void Update() {
-            horizontal = keyboardInput.Horizontal;
-            vertical = keyboardInput.Vertical;
-            
-            
-            cameraButton = keyboardInput.CameraButton;
-            if (cameraButton) onCameraButtonPressed?.Invoke();
+            ApplyInputs();
         }
         #endregion
 
         
 
         #region Custom Methods
+
+        private void ApplyInputs() {
+            horizontal = keyboardInput.Horizontal;
+            vertical = keyboardInput.Vertical;
+            cameraButton = keyboardInput.CameraButton;
+            nextUnitButton = keyboardInput.NextUnitButton;
+            commandMenuButton = keyboardInput.CommandMenuButton;
+            pauseMenuButton = keyboardInput.PauseMenuButton;
+            settingsMenuButton = keyboardInput.SettingsMenuButton;
+            mainAttackButton = keyboardInput.MainAttackButton;
+            altAttackButton = keyboardInput.AltAttackButton;
+        }
+        
         private void SetInput(InputType type) {
             inputType = type;
             switch (type) {
