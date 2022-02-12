@@ -12,7 +12,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         
         #region Builtin Methods
-        public virtual void Start() {
+        protected virtual void Start() {
             rb = GetComponent<Rigidbody>();
         }
 
@@ -20,12 +20,18 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         private void FixedUpdate() {
             if (rb) HandlePhysics();
         }
+
+
+        private void Update() {
+            HandleLogics();
+        }
         #endregion
 
         
 
         #region Custom Methods
         protected virtual void HandlePhysics() { }
+        protected virtual void HandleLogics() { }
         #endregion
     }
 }

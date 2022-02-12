@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Input;
 
@@ -7,17 +6,20 @@ using WarGames_Defcon_1.Code.Scripts.Input;
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class WeaponController : MonoBehaviour {
         #region Variables
-        [Header("Weapon Controller Properties")]
         public bool fireAllowed = true;
 
-        private List<IWeapon> weapons = new();
+        [SerializeField] private IWeapon mainWeapon;
+        private IWeapon altWeapon;
         #endregion
 
 
 
         #region Builtin Methods
         private void Start() {
-            weapons = GetComponentsInChildren<IWeapon>().ToList();
+            var w = GetComponentsInChildren<IWeapon>().ToList();
+            // to fix
+            mainWeapon = w[0];
+            altWeapon = w[1];
         }
         #endregion
 
@@ -25,9 +27,9 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
         #region Custom Methods
         public void UpdateWeapon(InputController input) {
-            //if (!input.FireButton || !fireAllowed) return;
-            //if (weapons.Count <= 0) return;
-            //foreach (var weapon in weapons) weapon.FireWeapon();
+            if (!fireAllowed) return;
+            if (input.MainAttackButton) mainWeapon.WeaponFire();
+            if (input.AltAttackButton) altWeapon.WeaponFire();
         }
         #endregion
     }

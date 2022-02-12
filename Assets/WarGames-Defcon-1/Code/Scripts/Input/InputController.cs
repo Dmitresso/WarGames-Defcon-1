@@ -63,7 +63,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         
 
         #region Custom Methods
-
         private void ApplyInputs() {
             horizontal = keyboardInput.Horizontal;
             vertical = keyboardInput.Vertical;
@@ -75,6 +74,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             mainAttackButton = keyboardInput.MainAttackButton;
             altAttackButton = keyboardInput.AltAttackButton;
         }
+        
         
         private void SetInput(InputType type) {
             inputType = type;

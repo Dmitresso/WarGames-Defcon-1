@@ -4,9 +4,7 @@
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     public class BaseInput : MonoBehaviour {
         #region Variables
-
         [SerializeField] protected Keys keys;
-
         protected float horizontal, vertical;
         #endregion
 
