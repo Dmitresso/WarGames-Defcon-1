@@ -466,6 +466,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   com: {fileID: 1075390239}
+  currentUnitIndex: 0
+  units: []
 --- !u!114 &1216301418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,10 +500,6 @@ MonoBehaviour:
   keys:
     horizontal: 
     vertical: 
-    moveForward: 0
-    moveBackward: 0
-    moveLeft: 0
-    moveRight: 0
     camera: 0
     nextUnit: 0
     commandMenu: 0

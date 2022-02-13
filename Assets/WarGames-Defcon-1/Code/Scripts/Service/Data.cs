@@ -23,6 +23,22 @@ namespace WarGames_Defcon_1.Code.Scripts.Service {
                     ButtonOnClickSound = (AudioClip) UnityEngine.Resources.Load(buttonOnClickSoundPath);
                 }
             }
+
+
+            public struct Text {
+                public static string briefing;
+                public static string objectives;
+                public static string vehicles;
+                public static string email;
+
+                public static void Load(Lang language, Fraction fraction, int level) {
+                    var maxLevel = 15;
+                    if (level > maxLevel) {
+                        Debug.Log("[] Trying to load level " + level);
+                    }
+                    var finalPath = language.ToString() + fraction;
+                }
+            }
         }
     }
 }

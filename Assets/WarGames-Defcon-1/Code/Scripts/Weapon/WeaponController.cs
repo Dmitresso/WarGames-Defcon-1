@@ -8,7 +8,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         #region Variables
         public bool fireAllowed = true;
 
-        [SerializeField] private IWeapon mainWeapon;
+        private IWeapon mainWeapon;
         private IWeapon altWeapon;
         #endregion
 

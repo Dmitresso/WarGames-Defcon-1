@@ -8,14 +8,14 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [RequireComponent(typeof(InputController))]
     public class PlayerController : BaseRBController {
         #region Variables
-        [SerializeField] private int currentUnitIndex;
+
         private Unit.Unit currentUnit;
+        private int currentUnitIndex;
         [SerializeField] private List<Unit.Unit> units;
         
         
         private InputController input;
         private MovementController movement;
-        private WeaponController weapon;
         private Animator animator;
         #endregion
 
@@ -37,7 +37,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             base.Start();
             input = GetComponent<InputController>();
             movement = GetComponent<MovementController>();
-            weapon = GetComponent<WeaponController>();
             animator = GetComponent<Animator>();
         }
         #endregion
@@ -63,12 +62,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         protected virtual void HandleWeapons() {
-            weapon.UpdateWeapon(input);
+            currentUnit.UpdateWeapon(input);
         }
 
 
         protected virtual void HandleAnimations(Animator animator) {
-            CurrentUnit.UpdateAnimation(animator);
+            currentUnit.UpdateAnimation(animator);
         }
 
 
@@ -77,6 +76,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             currentUnitIndex++;
             if (currentUnitIndex == units.Count) currentUnitIndex = 0;
             currentUnit = units[currentUnitIndex];
+            Debug.Log("Current unit: " + currentUnit);
         }
         #endregion
     }
