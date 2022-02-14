@@ -19,8 +19,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
         [SerializeField] protected GameObject parentGO;
         [SerializeField] protected BaseProjectile pooledGO;
         
-        protected Transform helicopter;
-        protected List<BaseProjectile> pool = new List<BaseProjectile>();
+        protected Transform weapon;
+        protected List<BaseProjectile> pool = new();
         #endregion
 
 
@@ -79,7 +79,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
         
         
         public virtual IEnumerator Utilize(BaseProjectile projectile) {
-            yield return new WaitUntil(() => Vector3.Distance(helicopter.position, projectile.transform.position) > utilizeDistance);
+            yield return new WaitUntil(() => Vector3.Distance(weapon.position, projectile.transform.position) > utilizeDistance);
             projectile.gameObject.SetActive(false);
             var t = projectile.transform;
             var pt = pooledGO.transform;

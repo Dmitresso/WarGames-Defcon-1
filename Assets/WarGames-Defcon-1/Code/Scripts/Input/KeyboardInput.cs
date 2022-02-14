@@ -38,6 +38,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         protected override void HandleInputs() {
             base.HandleInputs();
 
+            HandleMainAttackButton();
+            HandleAltAttackButton();
+            HandleCameraButton();
+            HandleNextUnitButton();
             HandleCommandMenuButton();
             HandlePauseMenuButton();
             HandleSettingsMenuButton();
@@ -45,26 +49,17 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         }
 
 
-        protected virtual void HandleCommandMenuButton() {
-            commandMenuB = UnityEngine.Input.GetKeyDown(keys.commandMenu);
-        }
+        protected virtual void HandleMainAttackButton() => mainAttackB = UnityEngine.Input.GetKeyDown(keys.mainAttack);
+        protected virtual void HandleAltAttackButton() => altAttackB = UnityEngine.Input.GetKeyDown(keys.altAttack);
+        protected virtual void HandleCameraButton() => cameraB = UnityEngine.Input.GetKeyDown(keys.camera);
+        protected virtual void HandleNextUnitButton() => nextUnitB = UnityEngine.Input.GetKeyDown(keys.nextUnit);
+        protected virtual void HandleCommandMenuButton() => commandMenuB = UnityEngine.Input.GetKeyDown(keys.commandMenu);
+        protected virtual void HandlePauseMenuButton() => pauseMenuB = UnityEngine.Input.GetKeyDown(keys.pauseMenu);
+        protected virtual void HandleSettingsMenuButton() => settingsMenuB = UnityEngine.Input.GetKeyDown(keys.settingsMenu);
         
         
-        protected virtual void HandlePauseMenuButton() {
-            pauseMenuB = UnityEngine.Input.GetKeyDown(keys.pauseMenu);
-        }
-        
-        
-        protected virtual void HandleSettingsMenuButton() {
-            if (UnityEngine.Input.GetKeyDown(keys.settingsMenu)) Application.Quit();
-        }
-
-
         protected virtual void ClampInputs() {
-            
         }
         #endregion
-
-        public bool C1 { get; set; }
     }
 }
