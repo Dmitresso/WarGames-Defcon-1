@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace WarGames_Defcon_1.Code.Scripts.Weapon {
+namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
     public class ProjectilePool : MonoBehaviour {
         #region Variables
         [Header("Pool Properties")]
@@ -27,8 +27,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
         #region Builtin Methods
         private void Start() {
-            helicopter = transform.root;
-            
             FillPool(size, pooledGO, parentGO);
         }
         #endregion

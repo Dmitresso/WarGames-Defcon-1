@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool;
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class BaseWeapon : MonoBehaviour, IWeapon {
@@ -18,7 +19,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         
         
         #region Builtin Methods
-        private void Start() {
+        private void Awake() {
             projectilePool = GetComponent<ProjectilePool>();
             audioSource = GetComponent<AudioSource>();
             currentAmmoCount = maxAmmoCount;

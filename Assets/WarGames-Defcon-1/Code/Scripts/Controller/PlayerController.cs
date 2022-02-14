@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Input;
-using WarGames_Defcon_1.Code.Scripts.Weapon;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
-    [RequireComponent(typeof(InputController))]
+    [RequireComponent(typeof(Animator),
+                     typeof(InputController),
+                     typeof(MovementController))]
     public class PlayerController : BaseRBController {
         #region Variables
 
@@ -27,17 +28,19 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             get => units[currentUnitIndex];
             private set => currentUnit = value;
         }
-
         #endregion
         
         
 
         #region Builtin Methods
-        protected override void Start() {
-            base.Start();
+        protected override void Awake() {
+            base.Awake();
+            animator = GetComponent<Animator>();
             input = GetComponent<InputController>();
             movement = GetComponent<MovementController>();
-            animator = GetComponent<Animator>();
+
+            currentUnit = units[0];
+            Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);
         }
         #endregion
 

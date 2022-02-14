@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
-namespace WarGames_Defcon_1.Code.Scripts.Weapon {
+namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
     public class AdvancedProjectilePool : ProjectilePool {
         #region Variables
         [Tooltip("Calculate pool size automatically according to \"utilizeDistance\", \"projectileSpeed\" and \"weaponFireRate\" values. True by default.")]
@@ -13,9 +14,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
 
         #region Builtin Methods
-        private void Start() {
-            helicopter = transform.root;
+        private void Awake() {
             weapon = GetComponent<RapidFireWeapon>();
+        }
+
+        
+        private void Start() {
             var projectile = pooledGO.GetComponent<BaseProjectile>();
 
             if (calculateOptimalPoolSize) {

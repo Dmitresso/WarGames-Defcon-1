@@ -2,7 +2,8 @@
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
-    [RequireComponent(typeof(Rigidbody), typeof(SphereCollider))]
+    [RequireComponent(typeof(Rigidbody),
+                     typeof(SphereCollider))]
     public class BaseProjectile : MonoBehaviour {
         #region Variables
         [SerializeField] private float speed = 200f;
@@ -20,7 +21,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         
 
         #region Builtin Methods
-        
         private void Awake() {
             rb = GetComponent<Rigidbody>();
             collider = GetComponent<SphereCollider>();
@@ -35,17 +35,14 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         private void OnDisable() {
             if (rb) rb.velocity = Vector3.zero;
         }
-
         #endregion
 
 
 
         #region Custom Methods
-
         public void FireProjectile() {
             rb.AddForce(transform.forward * speed, ForceMode.Impulse);
         }
-
         #endregion
     }
 }

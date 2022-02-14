@@ -12,7 +12,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         
         #region Builtin Methods
-        protected virtual void Start() {
+        protected virtual void Awake() {
             rb = GetComponent<Rigidbody>();
         }
 

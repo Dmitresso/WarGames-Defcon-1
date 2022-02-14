@@ -49,7 +49,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
 
         #region Builtin Methods
-        private void Start() {
+        private void Awake() {
             keyboardInput = GetComponent<KeyboardInput>();
             if (keyboardInput) SetInput(inputType);
         }

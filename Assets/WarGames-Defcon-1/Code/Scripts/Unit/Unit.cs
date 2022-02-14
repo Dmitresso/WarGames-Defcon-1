@@ -4,11 +4,12 @@ using WarGames_Defcon_1.Code.Scripts.Weapon;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Unit {
+    [RequireComponent(typeof(WeaponController))]
     public abstract class Unit : MonoBehaviour {
         #region Variables
-        [SerializeField] private WeaponController weapon;
-        [SerializeField] private bool playable;
-        
+        [SerializeField] protected bool playable;
+
+        protected WeaponController weapon;
         protected float hp = 100f;
         protected float armor = 0f;
         protected float speed = 10f;
@@ -17,7 +18,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Unit {
 
 
         #region Builtin Methods
-        private void Start() {
+        private void Awake() {
             weapon = GetComponent<WeaponController>();
         }
         #endregion

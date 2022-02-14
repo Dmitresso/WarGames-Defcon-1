@@ -15,11 +15,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
 
         #region Builtin Methods
-        private void Start() {
+        private void Awake() {
             var w = GetComponentsInChildren<IWeapon>().ToList();
             // to fix
             mainWeapon = w[0];
             altWeapon = w[1];
+            Debug.Log("[WeaponController] Weapon: " + w[0]);
+            Debug.Log("[WeaponController] Weapon: " + w[1]);
         }
         #endregion
 

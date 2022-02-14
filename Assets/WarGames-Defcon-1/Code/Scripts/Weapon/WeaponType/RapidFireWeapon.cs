@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
@@ -8,7 +9,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
         [Header("Rapid Fire Properties")] public float fireRate = 0.15f;
         public float lastFireTime;
-
         #endregion
 
 
@@ -26,7 +26,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
                 lastFireTime = Time.time;
             }
         }
-
         #endregion
     }
 }
