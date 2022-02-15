@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
@@ -28,7 +30,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         #region Builtin Methods
         private void Start() {
-            
         }
         #endregion
         

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool;
 
+
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class BaseWeapon : MonoBehaviour, IWeapon {
         #region Variables
@@ -33,8 +34,9 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
             Fire();
         }
 
-        public virtual void WeaponReload() {
-            currentAmmoCount = maxAmmoCount;
+        
+        public void WeaponReload() {
+            throw new System.NotImplementedException();
         }
         #endregion
 
@@ -66,7 +68,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
         protected virtual void HandleVFX() {
             if (muzzleFlash) muzzleFlash.Play();
-            
         }
         #endregion
     }

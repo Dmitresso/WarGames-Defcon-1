@@ -8,20 +8,25 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         #region Variables
         public bool fireAllowed = true;
 
-        private IWeapon mainWeapon;
-        private IWeapon altWeapon;
+        [SerializeField] private GameObject mainWeapon;
+        [SerializeField] private GameObject altWeapon;
+        private IWeapon mainIWeapon;
+        private IWeapon altIWeapon;
         #endregion
 
 
 
         #region Builtin Methods
-        private void Awake() {
-            var w = GetComponentsInChildren<IWeapon>().ToList();
-            // to fix
-            mainWeapon = w[0];
-            altWeapon = w[1];
-            Debug.Log("[WeaponController] Weapon: " + w[0]);
-            Debug.Log("[WeaponController] Weapon: " + w[1]);
+        protected void Awake() {
+            mainIWeapon = mainWeapon.GetComponent<IWeapon>();
+            altIWeapon = altWeapon.GetComponent<IWeapon>();
+        }
+
+
+        protected void OnValidate() {
+            if (mainWeapon.GetComponent<IWeapon>() == null) mainWeapon = null;
+            if (altWeapon.GetComponent<IWeapon>() == null) altWeapon = null;
+            
         }
         #endregion
 
@@ -30,8 +35,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         #region Custom Methods
         public void UpdateWeapon(InputController input) {
             if (!fireAllowed) return;
-            if (input.MainAttackButton) mainWeapon.WeaponFire();
-            if (input.AltAttackButton) altWeapon.WeaponFire();
+            if (input.MainAttackButton) mainIWeapon.WeaponFire();
+            if (input.AltAttackButton) altIWeapon.WeaponFire();
         }
         #endregion
     }

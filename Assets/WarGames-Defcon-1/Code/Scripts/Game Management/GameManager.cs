@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using WarGames_Defcon_1.Code.Scripts.Service;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
-    public class GameManager : MonoBehaviour {
+    public class GameManager : Singleton<GameManager> {
         #region Variables
         [SerializeField] private bool pausable = true;
         [SerializeField] private GameObject[] systemPrefabs;

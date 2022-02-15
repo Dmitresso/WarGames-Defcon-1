@@ -39,7 +39,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             input = GetComponent<InputController>();
             movement = GetComponent<MovementController>();
 
-            currentUnit = units[0];
+            CurrentUnit = units[0];
             Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);
         }
         #endregion
@@ -50,6 +50,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         protected override void HandleLogics() {
             HandleAnimations(animator);
             HandleSwitchingNextUnit(input);
+            HandleExit(input);
         }
         
         
@@ -78,8 +79,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             if (!input.NextUnitButton) return;
             currentUnitIndex++;
             if (currentUnitIndex == units.Count) currentUnitIndex = 0;
-            currentUnit = units[currentUnitIndex];
-            Debug.Log("Current unit: " + currentUnit);
+            CurrentUnit = units[currentUnitIndex];
+        }
+
+
+        protected virtual void HandleExit(InputController input) {
+            
         }
         #endregion
     }
