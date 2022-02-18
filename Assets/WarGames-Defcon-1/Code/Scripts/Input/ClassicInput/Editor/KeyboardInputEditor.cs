@@ -1,4 +1,6 @@
 ﻿using UnityEditor;
+using WarGames_Defcon_1.Code.Scripts.Input.ClassicInput.InputType;
+using WarGames_Defcon_1.Code.Scripts.Input.InputType;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Input.Editor {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -388,6 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
+  mainWeapon: {fileID: 1799229890}
+  altWeapon: {fileID: 412014320}
 --- !u!65 &344628269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -466,7 +468,7 @@ Transform:
   - {fileID: 1799229891}
   - {fileID: 412014321}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366453632
 GameObject:
@@ -813,6 +815,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
+  mainWeapon: {fileID: 1025914438}
+  altWeapon: {fileID: 1699758878}
 --- !u!65 &1006097743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -987,10 +991,9 @@ GameObject:
   - component: {fileID: 1216301421}
   - component: {fileID: 1216301420}
   - component: {fileID: 1216301427}
-  - component: {fileID: 1216301419}
-  - component: {fileID: 1216301418}
+  - component: {fileID: 1216301430}
+  - component: {fileID: 1216301431}
   - component: {fileID: 1216301417}
-  - component: {fileID: 1216301425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1016,45 +1019,6 @@ MonoBehaviour:
   - {fileID: 1006097741}
   - {fileID: 344628267}
   - {fileID: 1825310876}
---- !u!114 &1216301418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216301416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da0e0a05bdb64c0eaecd0df269eccda0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboardInput: {fileID: 0}
-  inputType: 0
-  onCameraButtonPressed:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1216301419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216301416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796c070d47d54cc792c37e2196d47a4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keys:
-    horizontal: 
-    vertical: 
-    camera: 0
-    nextUnit: 0
-    commandMenu: 0
-    pauseMenu: 0
-    settingsMenu: 0
-    mainAttack: 0
-    altAttack: 0
 --- !u!54 &1216301420
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1150,20 +1114,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1216301425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216301416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d2e6c5b5ce4263b0412b5b7def8b70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  torqueForce: 5
-  moveForce: 5
 --- !u!95 &1216301427
 Animator:
   serializedVersion: 4
@@ -1184,6 +1134,84 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1216301430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216301416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a630980f89639e44086c1227d4107359, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8505f86c-ae02-4a49-a39e-9bb46a056232
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e230a516-2d1e-4dd6-841e-799112a9373f
+    m_ActionName: Player/Fire
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d7a7306d-0578-4a4d-8c6f-280af6821969
+    m_ActionName: Player/Fire Alternate
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c976a1b9-4875-4c16-b9c7-1e5fbe60c9a9
+    m_ActionName: Player/Change Unit[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 10b3fbf0-0867-4cb2-ade4-2dac29ad8643
+    m_ActionName: Player/Command Menu[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 30762783-dc82-4aab-9497-a3914613cb2e
+    m_ActionName: Player/Pause Menu[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ccc02c0e-ac4f-4e0f-9432-818057c5ba5e
+    m_ActionName: Player/Settings Menu[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 05fe518d-d409-40f4-abb0-fcc911ef10cc
+    m_ActionName: Player/Change View[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe580224-3cda-43cf-83e4-5ce4f50b965e
+    m_ActionName: Player/Rotate[/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1216301431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216301416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f70a36979a43508b03b6d525702ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1262308428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
+  mainWeapon: {fileID: 366453632}
+  altWeapon: {fileID: 1262308428}
 --- !u!65 &1778151122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1549,6 +1579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
+  mainWeapon: {fileID: 152147013}
+  altWeapon: {fileID: 108963748}
 --- !u!65 &1825310878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1627,7 +1659,7 @@ Transform:
   - {fileID: 152147014}
   - {fileID: 108963749}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066819769
 GameObject:
@@ -1770,5 +1802,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

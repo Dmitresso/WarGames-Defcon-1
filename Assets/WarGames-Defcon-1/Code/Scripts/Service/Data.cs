@@ -3,6 +3,12 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Service {
     public static class Data {
+        public static void Init() {
+            Resources.Init();
+            Settings.Init();
+        }
+        
+        
         public struct Resources {
             public static void Init() {
                 Music.Init();
@@ -37,6 +43,22 @@ namespace WarGames_Defcon_1.Code.Scripts.Service {
                         Debug.Log("[] Trying to load level " + level);
                     }
                     var finalPath = language.ToString() + fraction;
+                }
+            }
+        }
+
+        public struct Settings {
+            public static void Init() {
+                Input.Init();
+            }
+            
+            public struct Input {
+                public const string Horizontal = "Horizontal";
+                public const string Vertical = "Vertical";
+                
+                
+                public static void Init() {
+                    
                 }
             }
         }

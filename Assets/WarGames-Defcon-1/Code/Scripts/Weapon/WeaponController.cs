@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-using WarGames_Defcon_1.Code.Scripts.Input;
+﻿using UnityEngine;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
@@ -33,10 +31,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
 
         #region Custom Methods
-        public void UpdateWeapon(InputController input) {
+        public void UpdateWeapon(Input.Input input) {
             if (!fireAllowed) return;
-            if (input.MainAttackButton) mainIWeapon.WeaponFire();
-            if (input.AltAttackButton) altIWeapon.WeaponFire();
+            // if (input.MainAttackButton) mainIWeapon.WeaponFire();
+            // if (input.AltAttackButton) altIWeapon.WeaponFire();
         }
         #endregion
     }

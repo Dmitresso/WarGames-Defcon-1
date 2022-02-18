@@ -2,10 +2,10 @@
 using UnityEngine;
 
 
-namespace WarGames_Defcon_1.Code.Scripts.Input {
-    [Serializable] public struct Keys {
-        public string horizontal;
-        public string vertical;
+namespace WarGames_Defcon_1.Code.Scripts.Input.Keys {
+    [Serializable] public struct KeyboardKeys : IKeys {
+        public string Horizontal { get; set; }
+        public string Vertical { get; set; }
 
 
         public KeyCode camera;
@@ -17,7 +17,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         public KeyCode altAttack;
 
 
-        public Keys(string horizontal,
+        public KeyboardKeys(
+                    string horizontal,
                     string vertical,
 
                     KeyCode camera,
@@ -27,8 +28,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     KeyCode settingsMenu,
                     KeyCode mainAttack,
                     KeyCode altAttack) {
-            this.horizontal = horizontal;
-            this.vertical = vertical;
+            Horizontal = horizontal;
+            Vertical = vertical;
             
             this.camera = camera;
             this.nextUnit = nextUnit;

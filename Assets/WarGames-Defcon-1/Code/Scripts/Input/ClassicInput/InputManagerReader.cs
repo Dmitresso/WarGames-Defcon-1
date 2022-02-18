@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
@@ -17,7 +18,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
                 var name = axis.FindPropertyRelative("m_Name").stringValue;
                 var axisVal = axis.FindPropertyRelative("axis").intValue;
-                var inputType = (InputType)axis.FindPropertyRelative("type").intValue;
+                var inputType = (InputField.InputType)axis.FindPropertyRelative("type").intValue;
 
                 Debug.Log(name);
                 Debug.Log(axisVal);

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Input;
+using WarGames_Defcon_1.Code.Scripts.Input.ClassicInput;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
@@ -11,20 +12,20 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         
         
         #region Custom Methods
-        public void UpdateMovement(Rigidbody rb, InputController input) {
-            HandleMovement(rb, input);
-            HandleRotation(rb, input);
-        }
-        
-        
-        protected virtual void HandleMovement(Rigidbody rb, InputController input) {
-            rb.AddForce(input.Vertical * moveForce * Vector3.forward, ForceMode.Force);
-        }
-
-
-        protected virtual void HandleRotation(Rigidbody rb, InputController input) {
-            rb.AddTorque(input.Horizontal * torqueForce * Vector3.up, ForceMode.Force);
-        }
+        // public void UpdateMovement(Rigidbody rb, InputController input) {
+        //     HandleMovement(rb, input);
+        //     HandleRotation(rb, input);
+        // }
+        //
+        //
+        // protected virtual void HandleMovement(Rigidbody rb, InputController input) {
+        //     rb.AddForce(input.Vertical * moveForce * Vector3.forward, ForceMode.Force);
+        // }
+        //
+        //
+        // protected virtual void HandleRotation(Rigidbody rb, InputController input) {
+        //     rb.AddTorque(input.Horizontal * torqueForce * Vector3.up, ForceMode.Force);
+        // }
         #endregion
     }
 }

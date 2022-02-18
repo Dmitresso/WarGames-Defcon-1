@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Input;
+using WarGames_Defcon_1.Code.Scripts.Input.ClassicInput;
 using WarGames_Defcon_1.Code.Scripts.Weapon;
 
 
@@ -31,9 +32,9 @@ namespace WarGames_Defcon_1.Code.Scripts.Unit {
         }
 
 
-        public virtual void UpdateWeapon(InputController input) {
-            weapon.UpdateWeapon(input);
-        }
+        // public virtual void UpdateWeapon(InputController input) {
+        //     weapon.UpdateWeapon(input);
+        // }
         #endregion
     }
 }

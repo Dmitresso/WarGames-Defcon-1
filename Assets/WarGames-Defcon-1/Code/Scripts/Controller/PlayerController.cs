@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using WarGames_Defcon_1.Code.Scripts.Input;
+using UnityEngine.InputSystem;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [RequireComponent(typeof(Animator),
-                     typeof(InputController),
-                     typeof(MovementController))]
+                     typeof(InputController))]
     public class PlayerController : BaseRBController {
         #region Variables
 
@@ -48,38 +47,64 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         #region Custom Methods
         protected override void HandleLogics() {
-            HandleAnimations(animator);
-            HandleSwitchingNextUnit(input);
-            HandleExit(input);
         }
         
         
         protected override void HandlePhysics() {
-            HandleMovements();
-            HandleWeapons();
+            
         }
 
 
-        protected virtual void HandleMovements() {
-            movement.UpdateMovement(rb, input);
+        protected virtual void OnMove(InputAction.CallbackContext context) {
+            
         }
 
 
-        protected virtual void HandleWeapons() {
-            currentUnit.UpdateWeapon(input);
+        protected virtual void OnRotate() {
+            
+        }
+
+        
+        protected virtual void OnFireMain(InputAction.CallbackContext context) {
+            
         }
 
 
-        protected virtual void HandleAnimations(Animator animator) {
-            currentUnit.UpdateAnimation(animator);
+        protected virtual void OnFireAlternate() {
+            
         }
 
 
+        protected virtual void OnChangeView() {
+            
+        }
+
+        
+        protected virtual void OnChangeUnit() {
+            
+        }
+
+        
+        protected virtual void OnCommandMenu() {
+            
+        }
+
+        
+        protected virtual void OnPauseMenu() {
+            
+        }
+
+        
+        protected virtual void OnSettingsMenu() {
+            
+        }
+
+        
         protected virtual void HandleSwitchingNextUnit(InputController input) {
-            if (!input.NextUnitButton) return;
-            currentUnitIndex++;
-            if (currentUnitIndex == units.Count) currentUnitIndex = 0;
-            CurrentUnit = units[currentUnitIndex];
+            //if (!input.NextUnitButton) return;
+            //currentUnitIndex++;
+            //if (currentUnitIndex == units.Count) currentUnitIndex = 0;
+            //CurrentUnit = units[currentUnitIndex];
         }
 
 
