@@ -2,6 +2,7 @@
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Service {
+    [DefaultExecutionOrder(-100)]
     public static class Data {
         public static void Init() {
             Resources.Init();

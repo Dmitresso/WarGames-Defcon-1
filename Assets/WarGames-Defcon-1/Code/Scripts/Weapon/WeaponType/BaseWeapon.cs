@@ -4,7 +4,7 @@ using WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool;
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class BaseWeapon : MonoBehaviour, IWeapon {
-        #region Variables
+        #region Fields
         [SerializeField] private Transform muzzlePosition;
         [SerializeField] private GameObject projectile;
         [SerializeField] private int maxAmmoCount = 100;

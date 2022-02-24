@@ -5,7 +5,7 @@ using WarGames_Defcon_1.Code.Scripts.Input.Keys;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input.InputType {
     public class XboxInput : BaseInput {
-        #region Variables
+        #region Fields
         [SerializeField] protected XboxKeys xboxKeys;
         #endregion
 

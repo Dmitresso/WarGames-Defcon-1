@@ -5,7 +5,7 @@ using WarGames_Defcon_1.Code.Scripts.UI;
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     public class UIController : Singleton<UIController> {
-        #region Variables
+        #region Fields
         [SerializeField] private CommandMenu commandMenu;
         [SerializeField] private PauseMenu pauseMenu;
         [SerializeField] private SettingsMenu settingsMenu;

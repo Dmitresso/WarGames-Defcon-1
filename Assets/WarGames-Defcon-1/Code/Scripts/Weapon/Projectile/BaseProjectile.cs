@@ -5,7 +5,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     [RequireComponent(typeof(Rigidbody),
                      typeof(SphereCollider))]
     public class BaseProjectile : MonoBehaviour {
-        #region Variables
+        #region Fields
         [SerializeField] private float speed = 200f;
         [SerializeField] private float damage = 10f;
 

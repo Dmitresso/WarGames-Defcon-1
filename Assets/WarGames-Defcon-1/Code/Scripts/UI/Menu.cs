@@ -4,7 +4,7 @@
 namespace WarGames_Defcon_1.Code.Scripts.UI {
     [RequireComponent(typeof(CanvasGroup))]
     public class Menu : MonoBehaviour {
-        #region Variables
+        #region Fields
         private CanvasGroup canvasGroup;
         #endregion
 

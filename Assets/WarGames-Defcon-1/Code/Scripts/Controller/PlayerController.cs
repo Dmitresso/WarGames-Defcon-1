@@ -1,20 +1,24 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using WarGames_Defcon_1.Code.Scripts.Input;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
-    [RequireComponent(typeof(Animator),
-                     typeof(InputController))]
-    public class PlayerController : BaseRBController {
-        #region Variables
-
-        private Unit.Unit currentUnit;
-        private int currentUnitIndex;
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(Rigidbody),
+                     typeof(Animator))]
+    public class PlayerController : InputController {
+        #region Fields
+        [SerializeField] private Transform com;
         [SerializeField] private List<Unit.Unit> units;
         
         
-        private InputController input;
+        private Unit.Unit currentUnit;
+        private int currentUnitIndex;
+
+        
+        private Rigidbody rb;
         private MovementController movement;
         private Animator animator;
         #endregion
@@ -22,7 +26,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         #region Properties
-
         public Unit.Unit CurrentUnit {
             get => units[currentUnitIndex];
             private set => currentUnit = value;
@@ -32,11 +35,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         
 
         #region Builtin Methods
-        protected override void Awake() {
+        protected void Awake() {
             base.Awake();
+            rb = GetComponent<Rigidbody>();
             animator = GetComponent<Animator>();
-            input = GetComponent<InputController>();
-            movement = GetComponent<MovementController>();
 
             CurrentUnit = units[0];
             Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);
@@ -46,70 +48,58 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         #region Custom Methods
-        protected override void HandleLogics() {
+        protected override void HandleMainAttackPerform() {
+            mainAttackHeld = true;
+            StartCoroutine(nameof(MainAttackHold));
+        }
+        
+
+        protected override void ChangePosition() {
+
         }
         
         
-        protected override void HandlePhysics() {
-            
+        
+
+
+        protected override void OnMove(InputAction.CallbackContext context) {
+            var moveDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+            Debug.Log("moveDirection: " + moveDirection);
+            rb.AddForce(moveDirection * 30f, ForceMode.Force);
         }
 
-
-        protected virtual void OnMove(InputAction.CallbackContext context) {
-            
+        protected override void OnRotate(InputAction.CallbackContext context) {
+            Debug.Log("x: " + context.ReadValue<Vector2>().x);
+            rb.AddTorque(context.ReadValue<Vector2>().x * 30f * Vector3.up, ForceMode.Force);
         }
-
-
-        protected virtual void OnRotate() {
-            
+        
+        
+        protected override void OnChangeUnit(InputAction.CallbackContext context) {
+            currentUnitIndex++;
+            if (currentUnitIndex == units.Count) currentUnitIndex = 0;
+            var nextUnit = units[currentUnitIndex];
+            if (nextUnit.Playable) CurrentUnit = nextUnit;
+            Debug.Log("[PlayerController] Current unit: " + currentUnit.name);
         }
 
         
-        protected virtual void OnFireMain(InputAction.CallbackContext context) {
-            
-        }
-
-
-        protected virtual void OnFireAlternate() {
-            
-        }
-
-
-        protected virtual void OnChangeView() {
-            
+        protected override void OnChangeView(InputAction.CallbackContext context) {
+            Debug.Log("[PlayerController] OnChangeView");
         }
 
         
-        protected virtual void OnChangeUnit() {
-            
+        protected override void OnCommandMenu(InputAction.CallbackContext context) {
+            Debug.Log("[PlayerController] OnCommandMenu");
         }
 
         
-        protected virtual void OnCommandMenu() {
-            
+        protected override void OnPauseMenu(InputAction.CallbackContext context) {
+            Debug.Log("[PlayerController] OnPauseMenu");
         }
 
         
-        protected virtual void OnPauseMenu() {
-            
-        }
-
-        
-        protected virtual void OnSettingsMenu() {
-            
-        }
-
-        
-        protected virtual void HandleSwitchingNextUnit(InputController input) {
-            //if (!input.NextUnitButton) return;
-            //currentUnitIndex++;
-            //if (currentUnitIndex == units.Count) currentUnitIndex = 0;
-            //CurrentUnit = units[currentUnitIndex];
-        }
-
-
-        protected virtual void HandleExit(InputController input) {
-            
+        protected override void OnSettingsMenu(InputAction.CallbackContext context) {
+            Debug.Log("[PlayerController] OnSettingsMenu");
         }
         #endregion
     }

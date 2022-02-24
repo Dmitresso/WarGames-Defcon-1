@@ -3,7 +3,7 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
     public class AdvancedProjectilePool : ProjectilePool {
-        #region Variables
+        #region Fields
         [Tooltip("Calculate pool size automatically according to \"utilizeDistance\", \"projectileSpeed\" and \"weaponFireRate\" values. True by default.")]
         public bool calculateOptimalPoolSize = true;
 

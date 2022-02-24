@@ -3,7 +3,7 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Camera {
     public class SimpleCamera : BaseCamera, ICamera {
-        #region Variables
+        #region Fields
         public float height = 2f;
         public float distance = 2f;
         public float smoothSpeed = 0.3f;

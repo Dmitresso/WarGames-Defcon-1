@@ -3,7 +3,7 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class WeaponController : MonoBehaviour {
-        #region Variables
+        #region Fields
         public bool fireAllowed = true;
 
         [SerializeField] private GameObject mainWeapon;

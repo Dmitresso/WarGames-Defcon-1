@@ -7,7 +7,7 @@ using WarGames_Defcon_1.Code.Scripts.Service;
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     public class GameManager : Singleton<GameManager> {
-        #region Variables
+        #region Fields
         [SerializeField] private bool pausable = true;
         [SerializeField] private GameObject[] systemPrefabs;
         private List<GameObject> instancedSystemPrefabs;

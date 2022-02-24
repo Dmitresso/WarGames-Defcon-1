@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
-using WarGames_Defcon_1.Code.Scripts.Input;
-using WarGames_Defcon_1.Code.Scripts.Input.ClassicInput;
 using WarGames_Defcon_1.Code.Scripts.Weapon;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Unit {
     [RequireComponent(typeof(WeaponController))]
     public abstract class Unit : MonoBehaviour {
-        #region Variables
+        #region Fields
         [SerializeField] protected bool playable;
+        [SerializeField] protected float hp = 100f;
+        [SerializeField] protected float armor = 0f;
+        [SerializeField] protected float speed = 10f;
 
         protected WeaponController weapon;
-        protected float hp = 100f;
-        protected float armor = 0f;
-        protected float speed = 10f;
+        #endregion
+
+
+
+        #region Properties
+        public bool Playable => playable;
+        public float Speed => speed;
         #endregion
 
 

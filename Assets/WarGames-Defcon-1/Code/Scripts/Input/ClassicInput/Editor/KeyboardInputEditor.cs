@@ -6,7 +6,7 @@ using WarGames_Defcon_1.Code.Scripts.Input.InputType;
 namespace WarGames_Defcon_1.Code.Scripts.Input.Editor {
     [CustomEditor(typeof(KeyboardInput))]
     public class KeyboardInputEditor : UnityEditor.Editor {
-        #region Variables
+        #region Fields
         private KeyboardInput targetInput;
         #endregion
 

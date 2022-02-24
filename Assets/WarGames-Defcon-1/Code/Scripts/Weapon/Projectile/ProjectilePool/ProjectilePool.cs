@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
     public class ProjectilePool : MonoBehaviour {
-        #region Variables
+        #region Fields
         [Header("Pool Properties")]
         [SerializeField] protected float utilizeDistance = 100f;
         [SerializeField] protected int size = 10;

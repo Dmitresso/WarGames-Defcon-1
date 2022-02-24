@@ -3,7 +3,7 @@ using Input = WarGames_Defcon_1.Code.Scripts.Input.ClassicInput;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input.ClassicInput {
     public abstract class InputReceiver : MonoBehaviour {
-        #region Variables
+        #region Fields
         [SerializeField] protected Scripts.Input.InputType.InputType selectedInputType = Scripts.Input.InputType.InputType.Keyboard;
 
         protected Scripts.Input.InputType.InputType inspectorInputType;

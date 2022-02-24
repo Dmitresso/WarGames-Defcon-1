@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace WarGames_Defcon_1.Code.Scripts.Camera {
     public class BaseCamera : MonoBehaviour {
-        #region Variables
+        #region Fields
         public Rigidbody rb;
         public Transform lookAtTarget;
         

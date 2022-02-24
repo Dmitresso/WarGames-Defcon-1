@@ -3,7 +3,7 @@ using WarGames_Defcon_1.Code.Scripts.Input.Keys;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input.ClassicInput.InputType {
     public class KeyboardInput : BaseInput {
-        #region Variables
+        #region Fields
         [SerializeField] protected KeyboardKeys keyboardKeys;
         
         protected bool cameraB;

@@ -3,7 +3,7 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Service {
     public class Singleton<T> : MonoBehaviour where T : Singleton<T> {
-        #region Variables
+        #region Fields
         private static T instance;
         #endregion
 

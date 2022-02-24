@@ -9,7 +9,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input.ClassicInput {
                      typeof(XboxInput),
                      typeof(MobileInput))]
     public class InputController : InputReceiver  {
-        #region Variables
+        #region Fields
         //[SerializeField] private KeyboardInput keyboardInput;
         [SerializeField] private IInputSystem input;
 

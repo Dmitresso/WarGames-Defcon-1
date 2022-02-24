@@ -3,7 +3,7 @@
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class GatlingGunWeapon : RapidFireWeapon {
-        #region Variables
+        #region Fields
         public Transform barrelGO;
         public float rotationSpeed = 15f;
         public float slowDownSpeed = 5f;

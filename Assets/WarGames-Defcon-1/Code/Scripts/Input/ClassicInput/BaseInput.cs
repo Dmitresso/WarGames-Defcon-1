@@ -4,7 +4,7 @@ using WarGames_Defcon_1.Code.Scripts.Service;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input.ClassicInput {
     public class BaseInput : MonoBehaviour, IInputSystem {
-        #region Variables
+        #region Fields
         protected float horizontal, vertical;
 
         private IKeys keys;

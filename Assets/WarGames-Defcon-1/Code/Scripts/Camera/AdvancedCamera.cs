@@ -4,7 +4,7 @@ using WarGames_Defcon_1.Code.Scripts.Service;
 
 namespace WarGames_Defcon_1.Code.Scripts.Camera {
     public class AdvancedCamera : BaseCamera, ICamera {
-        #region Variables
+        #region Fields
         public float height = 4f;
         public float minGroundHeight = 4f;
         public float minDistance = 4f;
