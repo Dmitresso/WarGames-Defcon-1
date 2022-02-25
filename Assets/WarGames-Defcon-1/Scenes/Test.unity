@@ -1018,6 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543983053e354239a74648fda5ecdfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oneAttackHeld: 1
   com: {fileID: 1075390239}
   units:
   - {fileID: 1778151126}
@@ -1152,7 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: a630980f89639e44086c1227d4107359, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:

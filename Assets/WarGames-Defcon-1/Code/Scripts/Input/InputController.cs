@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,18 +7,52 @@ using UnityEngine.InputSystem;
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     public abstract class InputController : MonoBehaviour {
         #region Fields
+        [SerializeField] protected bool oneAttackHeld = true;
+        [SerializeField, Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;
+        [SerializeField, Range(minDelay, maxDelay)] protected float alternateAttackDelay = 1f;
 
-        protected float mainAttackDelay = 1f;
-        protected float alternateAttackDelay = 1f;
+
+        
         protected bool mainAttackHeld;
         protected bool alternateAttackHeld;
+        protected bool moveHeld;
+        protected bool rotateHeld;
+
         #endregion
 
 
 
+        #region Constants
+        private const float minDelay = 0.1f;
+        private const float maxDelay = 1.5f;
+        
+
+        #endregion
+        
+
+        
         #region Properties
-        public float MainAttackDelay => mainAttackDelay;
-        public float AlternateAttackDelay => alternateAttackDelay;
+        public float MainAttackDelay {
+            get => mainAttackDelay;
+            set {
+                value = value switch {
+                    < minDelay => minDelay,
+                    > maxDelay => maxDelay,
+                    _ => value
+                };
+            }
+        }
+
+        public float AlternateAttackDelay {
+            get => alternateAttackDelay;
+            set {
+                value = value switch {
+                    < minDelay => minDelay,
+                    > maxDelay => maxDelay,
+                    _ => value
+                };
+            }
+        }
         
         public Input Input { get; private set; }
         #endregion
@@ -28,12 +63,17 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         protected void Awake() {
             Input = new Input();
 
-            Input.Player.MainAttack.performed += context => HandleMainAttackPerform();
-            Input.Player.MainAttack.canceled += context => HandleMainAttackCancel();
+            Input.Player.Move.performed += OnMovePerform;
+            Input.Player.Move.canceled += context => OnMoveCancel();
 
-            var interaction = Input.Player.MainAttack.interactions[0];
+            Input.Player.Rotate.performed += OnRotatePerform;
+            Input.Player.Rotate.canceled += context => OnRotateCancel();
             
+            Input.Player.MainAttack.performed += context => OnMainAttackPerform();
+            Input.Player.MainAttack.canceled += context => OnMainAttackCancel();
             
+            Input.Player.AlternateAttack.performed += context => OnAlternateAttackPerform();
+            Input.Player.AlternateAttack.canceled += context => OnAlternateAttackCancel();
             
             Input.Player.ChangeUnit.performed += OnChangeUnit;
             Input.Player.ChangeView.performed += OnChangeView;
@@ -49,6 +89,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         
         private void OnDisable() {
+            StopAllCoroutines();
             Input.Disable();
         }
         #endregion
@@ -56,64 +97,78 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
 
         #region Custom Methods
+        protected virtual void OnMovePerform(InputAction.CallbackContext context) {
+            moveHeld = true;
+        }
 
-        public int i = 0;
-        protected virtual void HandleMainAttackPerform() {
-            Debug.Log("[InputController] HandleMainAttackPerform()");
-            mainAttackHeld = true;
-            StartCoroutine(nameof(MainAttackHold));
+
+        protected virtual void OnMoveCancel() {
+            moveHeld = false;
+        }
+
+
+        protected virtual IEnumerator Move() {
+            yield return new WaitWhileUnit();
         }
         
         
-        protected void HandleMainAttackCancel() {
+        protected virtual void OnRotatePerform(InputAction.CallbackContext context) {
+
+        }
+        
+        
+        protected virtual void OnRotateCancel() {
+
+        }
+        
+        
+        protected virtual void OnMainAttackPerform() {
+            Debug.Log("[InputController] HandleMainAttackPerform()");
+            mainAttackHeld = true;
+            if (oneAttackHeld) alternateAttackHeld = false;
+            StartCoroutine(nameof(MainAttack));
+        }
+        
+        
+        protected virtual void OnMainAttackCancel() {
             Debug.Log("[InputController] HandleMainAttackCancel()");
             if (mainAttackHeld) mainAttackHeld = false;
         }
         
         
-        protected virtual IEnumerator MainAttackHold() {
-            i++;
+        protected virtual IEnumerator MainAttack() {
             while (mainAttackHeld) {
-                Debug.Log("[InputController] MainAttackHold()");
-                Debug.Log("[InputController] i: " + i);
+                Debug.Log("[InputController] MainAttack()");
                 yield return new WaitForSeconds(mainAttackDelay);
             }
         }
 
         
-        
-        
-        
-        
-        
-        protected virtual IEnumerator AlternateAttackHold(InputAction.CallbackContext context) {
-            yield return new WaitForSeconds(alternateAttackDelay);
+        protected virtual void OnAlternateAttackPerform() {
+            Debug.Log("[InputController] HandleAlternateAttackPerform()");
+            alternateAttackHeld = true;
+            if (oneAttackHeld) mainAttackHeld = false;
+            StartCoroutine(nameof(AlternateAttack));
+        }
+
+        protected virtual void OnAlternateAttackCancel() {
+            Debug.Log("[InputController] HandleAlternateAttackCancel()");
+            if (alternateAttackHeld) alternateAttackHeld = false;
         }
         
         
-        protected virtual void ChangePosition() {
-            
-        }
-        
-
-        protected virtual void OnMove(InputAction.CallbackContext context) {
-            
-        }
-
-        
-        protected virtual void OnRotate(InputAction.CallbackContext context) {
-
+        protected virtual IEnumerator AlternateAttack() {
+            while (alternateAttackHeld) {
+                Debug.Log("[InputController] AlternateAttack()");
+                yield return new WaitForSeconds(alternateAttackDelay);
+            }
         }
 
 
         protected virtual void OnMainAttack(InputAction.CallbackContext context) {
             Debug.Log("[InputController] OnFireMain");
         }
-
         
-        protected virtual void OnAlternateAttack(InputAction.CallbackContext context) {
-            Debug.Log("[InputController] OnFireAlternate");
-        }
 
         
         protected virtual void OnChangeUnit(InputAction.CallbackContext context) {

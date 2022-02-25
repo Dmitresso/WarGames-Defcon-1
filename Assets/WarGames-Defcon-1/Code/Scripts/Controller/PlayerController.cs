@@ -48,30 +48,28 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         #region Custom Methods
-        protected override void HandleMainAttackPerform() {
-            mainAttackHeld = true;
-            StartCoroutine(nameof(MainAttackHold));
-        }
-        
-
-        protected override void ChangePosition() {
-
-        }
+        // protected override void HandleMainAttackPerform() {
+        //     mainAttackHeld = true;
+        //     StartCoroutine(nameof(MainAttack));
+        // }
         
         
         
-
-
-        protected override void OnMove(InputAction.CallbackContext context) {
+        protected override void OnMovePerform(InputAction.CallbackContext context) {
             var moveDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
             Debug.Log("moveDirection: " + moveDirection);
             rb.AddForce(moveDirection * 30f, ForceMode.Force);
         }
 
-        protected override void OnRotate(InputAction.CallbackContext context) {
-            Debug.Log("x: " + context.ReadValue<Vector2>().x);
-            rb.AddTorque(context.ReadValue<Vector2>().x * 30f * Vector3.up, ForceMode.Force);
+        protected override void OnMoveCancel() {
+            
         }
+        
+
+        // protected override void OnRotate(InputAction.CallbackContext context) {
+        //     Debug.Log("x: " + context.ReadValue<Vector2>().x);
+        //     rb.AddTorque(context.ReadValue<Vector2>().x * 30f * Vector3.up, ForceMode.Force);
+        // }
         
         
         protected override void OnChangeUnit(InputAction.CallbackContext context) {
