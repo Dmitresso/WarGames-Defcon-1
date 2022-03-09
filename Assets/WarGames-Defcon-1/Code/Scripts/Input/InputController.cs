@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +7,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
     public abstract class InputController : MonoBehaviour {
         #region Fields
         [SerializeField] protected bool oneAttackHeld = true;
-        [SerializeField, Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;
-        [SerializeField, Range(minDelay, maxDelay)] protected float alternateAttackDelay = 1f;
-
+        [Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;
+        [Range(minDelay, maxDelay)] protected float alternateAttackDelay = 1f;
 
         
         protected bool mainAttackHeld;
@@ -18,6 +16,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         protected bool moveHeld;
         protected bool rotateHeld;
 
+
+        protected Coroutine mainAttackCoroutine;
+        protected Coroutine alternateAttackCoroutine;
+        protected Coroutine moveCoroutine;
+        protected Coroutine rotateCoroutine;
         #endregion
 
 
@@ -25,8 +28,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         #region Constants
         private const float minDelay = 0.1f;
         private const float maxDelay = 1.5f;
-        
-
         #endregion
         
 
@@ -62,7 +63,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         #region Builtin Methods
         protected void Awake() {
             Input = new Input();
-
+            
             Input.Player.Move.performed += OnMovePerform;
             Input.Player.Move.canceled += context => OnMoveCancel();
 
@@ -77,6 +78,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             
             Input.Player.ChangeUnit.performed += OnChangeUnit;
             Input.Player.ChangeView.performed += OnChangeView;
+            
             Input.Player.CommandMenu.performed += OnCommandMenu;
             Input.Player.PauseMenu.performed += OnPauseMenu;
             Input.Player.SettingsMenu.performed += OnSettingsMenu;
@@ -99,26 +101,35 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         #region Custom Methods
         protected virtual void OnMovePerform(InputAction.CallbackContext context) {
             moveHeld = true;
+            moveCoroutine = StartCoroutine(Move(context.ReadValue<Vector2>()));
         }
 
 
         protected virtual void OnMoveCancel() {
-            moveHeld = false;
+            if (moveHeld) moveHeld = false;
+            if (moveCoroutine != null) StopCoroutine(moveCoroutine);
         }
 
 
-        protected virtual IEnumerator Move() {
-            yield return new WaitWhileUnit();
+        protected virtual IEnumerator Move(Vector2 direction) {
+            yield return new WaitForFixedUpdate();
         }
         
-        
+
         protected virtual void OnRotatePerform(InputAction.CallbackContext context) {
-
+            rotateHeld = true;
+            rotateCoroutine = StartCoroutine(Rotate(context.ReadValue<Vector2>()));
         }
         
         
         protected virtual void OnRotateCancel() {
+            rotateHeld = false;
+            if (rotateCoroutine != null) StopCoroutine(rotateCoroutine);
+        }
 
+
+        protected virtual IEnumerator Rotate(Vector2 direction) {
+            yield return new WaitForFixedUpdate();
         }
         
         
@@ -126,21 +137,19 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             Debug.Log("[InputController] HandleMainAttackPerform()");
             mainAttackHeld = true;
             if (oneAttackHeld) alternateAttackHeld = false;
-            StartCoroutine(nameof(MainAttack));
+            mainAttackCoroutine = StartCoroutine(nameof(MainAttack));
         }
         
         
         protected virtual void OnMainAttackCancel() {
             Debug.Log("[InputController] HandleMainAttackCancel()");
             if (mainAttackHeld) mainAttackHeld = false;
+            if (mainAttackCoroutine != null) StopCoroutine(mainAttackCoroutine);
         }
         
         
         protected virtual IEnumerator MainAttack() {
-            while (mainAttackHeld) {
-                Debug.Log("[InputController] MainAttack()");
-                yield return new WaitForSeconds(mainAttackDelay);
-            }
+            while (mainAttackHeld) yield return new WaitForSeconds(mainAttackDelay);
         }
 
         
@@ -148,52 +157,35 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             Debug.Log("[InputController] HandleAlternateAttackPerform()");
             alternateAttackHeld = true;
             if (oneAttackHeld) mainAttackHeld = false;
-            StartCoroutine(nameof(AlternateAttack));
+            alternateAttackCoroutine = StartCoroutine(nameof(AlternateAttack));
         }
 
+        
         protected virtual void OnAlternateAttackCancel() {
             Debug.Log("[InputController] HandleAlternateAttackCancel()");
             if (alternateAttackHeld) alternateAttackHeld = false;
+            if (alternateAttackCoroutine != null) StopCoroutine(alternateAttackCoroutine);
         }
         
         
         protected virtual IEnumerator AlternateAttack() {
-            while (alternateAttackHeld) {
-                Debug.Log("[InputController] AlternateAttack()");
-                yield return new WaitForSeconds(alternateAttackDelay);
-            }
-        }
-
-
-        protected virtual void OnMainAttack(InputAction.CallbackContext context) {
-            Debug.Log("[InputController] OnFireMain");
+            while (alternateAttackHeld) yield return new WaitForSeconds(alternateAttackDelay);
         }
         
 
-        
-        protected virtual void OnChangeUnit(InputAction.CallbackContext context) {
-
-        }
+        protected virtual void OnChangeUnit(InputAction.CallbackContext context) { }
 
         
-        protected virtual void OnChangeView(InputAction.CallbackContext context) {
-            Debug.Log("[InputController] OnChangeView");
-        }
+        protected virtual void OnChangeView(InputAction.CallbackContext context) { }
 
         
-        protected virtual void OnCommandMenu(InputAction.CallbackContext context) {
-            Debug.Log("[InputController] OnCommandMenu");
-        }
+        protected virtual void OnCommandMenu(InputAction.CallbackContext context) { }
 
         
-        protected virtual void OnPauseMenu(InputAction.CallbackContext context) {
-            Debug.Log("[InputController] OnPauseMenu");
-        }
+        protected virtual void OnPauseMenu(InputAction.CallbackContext context) { }
 
         
-        protected virtual void OnSettingsMenu(InputAction.CallbackContext context) {
-            Debug.Log("[InputController] OnSettingsMenu");
-        }
+        protected virtual void OnSettingsMenu(InputAction.CallbackContext context) { }
         #endregion
     }
 }

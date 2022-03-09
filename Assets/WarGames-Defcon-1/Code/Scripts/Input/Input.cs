@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
-    public partial class @Input : IInputActionCollection2, IDisposable
+
+    public partial class @Input : IInputActionCollection2, IDisposable {
+    public InputActionAsset asset { get; }
+    public @Input()
     {
-        public InputActionAsset asset { get; }
-        public @Input()
-        {
-            asset = InputActionAsset.FromJson(@"{
+        asset = InputActionAsset.FromJson(@"{
     ""name"": ""WarGames Defcon 1"",
     ""maps"": [
         {
@@ -19,15 +19,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
-                    ""id"": ""8505f86c-ae02-4a49-a39e-9bb46a056232"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ChangePosition"",
                     ""type"": ""Value"",
                     ""id"": ""77a19cc4-04f6-468c-9397-91369a1e2913"",
                     ""expectedControlType"": ""Vector2"",
@@ -248,7 +239,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangePosition"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -259,7 +250,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""ChangePosition"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -270,7 +261,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""ChangePosition"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -281,7 +272,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ChangePosition"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -292,7 +283,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ChangePosition"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -362,235 +353,226 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         }
     ]
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_ChangePosition = m_Player.FindAction("ChangePosition", throwIfNotFound: true);
-            m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
-            m_Player_MainAttack = m_Player.FindAction("Main Attack", throwIfNotFound: true);
-            m_Player_AlternateAttack = m_Player.FindAction("Alternate Attack", throwIfNotFound: true);
-            m_Player_ChangeView = m_Player.FindAction("Change View", throwIfNotFound: true);
-            m_Player_ChangeUnit = m_Player.FindAction("Change Unit", throwIfNotFound: true);
-            m_Player_CommandMenu = m_Player.FindAction("Command Menu", throwIfNotFound: true);
-            m_Player_PauseMenu = m_Player.FindAction("Pause Menu", throwIfNotFound: true);
-            m_Player_SettingsMenu = m_Player.FindAction("Settings Menu", throwIfNotFound: true);
-        }
-
-        public void Dispose()
-        {
-            UnityEngine.Object.Destroy(asset);
-        }
-
-        public InputBinding? bindingMask
-        {
-            get => asset.bindingMask;
-            set => asset.bindingMask = value;
-        }
-
-        public ReadOnlyArray<InputDevice>? devices
-        {
-            get => asset.devices;
-            set => asset.devices = value;
-        }
-
-        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-        public bool Contains(InputAction action)
-        {
-            return asset.Contains(action);
-        }
-
-        public IEnumerator<InputAction> GetEnumerator()
-        {
-            return asset.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public void Enable()
-        {
-            asset.Enable();
-        }
-
-        public void Disable()
-        {
-            asset.Disable();
-        }
-        public IEnumerable<InputBinding> bindings => asset.bindings;
-
-        public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
-        {
-            return asset.FindAction(actionNameOrId, throwIfNotFound);
-        }
-        public int FindBinding(InputBinding bindingMask, out InputAction action)
-        {
-            return asset.FindBinding(bindingMask, out action);
-        }
-
         // Player
-        private readonly InputActionMap m_Player;
-        private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_ChangePosition;
-        private readonly InputAction m_Player_Rotate;
-        private readonly InputAction m_Player_MainAttack;
-        private readonly InputAction m_Player_AlternateAttack;
-        private readonly InputAction m_Player_ChangeView;
-        private readonly InputAction m_Player_ChangeUnit;
-        private readonly InputAction m_Player_CommandMenu;
-        private readonly InputAction m_Player_PauseMenu;
-        private readonly InputAction m_Player_SettingsMenu;
-        public struct PlayerActions
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_MainAttack = m_Player.FindAction("Main Attack", throwIfNotFound: true);
+        m_Player_AlternateAttack = m_Player.FindAction("Alternate Attack", throwIfNotFound: true);
+        m_Player_ChangeView = m_Player.FindAction("Change View", throwIfNotFound: true);
+        m_Player_ChangeUnit = m_Player.FindAction("Change Unit", throwIfNotFound: true);
+        m_Player_CommandMenu = m_Player.FindAction("Command Menu", throwIfNotFound: true);
+        m_Player_PauseMenu = m_Player.FindAction("Pause Menu", throwIfNotFound: true);
+        m_Player_SettingsMenu = m_Player.FindAction("Settings Menu", throwIfNotFound: true);
+    }
+
+    public void Dispose()
+    {
+        UnityEngine.Object.Destroy(asset);
+    }
+
+    public InputBinding? bindingMask
+    {
+        get => asset.bindingMask;
+        set => asset.bindingMask = value;
+    }
+
+    public ReadOnlyArray<InputDevice>? devices
+    {
+        get => asset.devices;
+        set => asset.devices = value;
+    }
+
+    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+    public bool Contains(InputAction action)
+    {
+        return asset.Contains(action);
+    }
+
+    public IEnumerator<InputAction> GetEnumerator()
+    {
+        return asset.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public void Enable()
+    {
+        asset.Enable();
+    }
+
+    public void Disable()
+    {
+        asset.Disable();
+    }
+    public IEnumerable<InputBinding> bindings => asset.bindings;
+
+    public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
+    {
+        return asset.FindAction(actionNameOrId, throwIfNotFound);
+    }
+    public int FindBinding(InputBinding bindingMask, out InputAction action)
+    {
+        return asset.FindBinding(bindingMask, out action);
+    }
+
+    // Player
+    private readonly InputActionMap m_Player;
+    private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_MainAttack;
+    private readonly InputAction m_Player_AlternateAttack;
+    private readonly InputAction m_Player_ChangeView;
+    private readonly InputAction m_Player_ChangeUnit;
+    private readonly InputAction m_Player_CommandMenu;
+    private readonly InputAction m_Player_PauseMenu;
+    private readonly InputAction m_Player_SettingsMenu;
+    public struct PlayerActions
+    {
+        private @Input m_Wrapper;
+        public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @MainAttack => m_Wrapper.m_Player_MainAttack;
+        public InputAction @AlternateAttack => m_Wrapper.m_Player_AlternateAttack;
+        public InputAction @ChangeView => m_Wrapper.m_Player_ChangeView;
+        public InputAction @ChangeUnit => m_Wrapper.m_Player_ChangeUnit;
+        public InputAction @CommandMenu => m_Wrapper.m_Player_CommandMenu;
+        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
+        public InputAction @SettingsMenu => m_Wrapper.m_Player_SettingsMenu;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActions instance)
         {
-            private @Input m_Wrapper;
-            public PlayerActions(@Input wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @ChangePosition => m_Wrapper.m_Player_ChangePosition;
-            public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
-            public InputAction @MainAttack => m_Wrapper.m_Player_MainAttack;
-            public InputAction @AlternateAttack => m_Wrapper.m_Player_AlternateAttack;
-            public InputAction @ChangeView => m_Wrapper.m_Player_ChangeView;
-            public InputAction @ChangeUnit => m_Wrapper.m_Player_ChangeUnit;
-            public InputAction @CommandMenu => m_Wrapper.m_Player_CommandMenu;
-            public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
-            public InputAction @SettingsMenu => m_Wrapper.m_Player_SettingsMenu;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
-            public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void SetCallbacks(IPlayerActions instance)
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
-                {
-                    @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                    @ChangePosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangePosition;
-                    @ChangePosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangePosition;
-                    @ChangePosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangePosition;
-                    @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                    @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                    @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                    @MainAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAttack;
-                    @MainAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAttack;
-                    @MainAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAttack;
-                    @AlternateAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAlternateAttack;
-                    @AlternateAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAlternateAttack;
-                    @AlternateAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAlternateAttack;
-                    @ChangeView.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeView;
-                    @ChangeView.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeView;
-                    @ChangeView.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeView;
-                    @ChangeUnit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeUnit;
-                    @ChangeUnit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeUnit;
-                    @ChangeUnit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeUnit;
-                    @CommandMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCommandMenu;
-                    @CommandMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCommandMenu;
-                    @CommandMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCommandMenu;
-                    @PauseMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
-                    @PauseMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
-                    @PauseMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
-                    @SettingsMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSettingsMenu;
-                    @SettingsMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSettingsMenu;
-                    @SettingsMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSettingsMenu;
-                }
-                m_Wrapper.m_PlayerActionsCallbackInterface = instance;
-                if (instance != null)
-                {
-                    @Move.started += instance.OnMove;
-                    @Move.performed += instance.OnMove;
-                    @Move.canceled += instance.OnMove;
-                    @ChangePosition.started += instance.OnChangePosition;
-                    @ChangePosition.performed += instance.OnChangePosition;
-                    @ChangePosition.canceled += instance.OnChangePosition;
-                    @Rotate.started += instance.OnRotate;
-                    @Rotate.performed += instance.OnRotate;
-                    @Rotate.canceled += instance.OnRotate;
-                    @MainAttack.started += instance.OnMainAttack;
-                    @MainAttack.performed += instance.OnMainAttack;
-                    @MainAttack.canceled += instance.OnMainAttack;
-                    @AlternateAttack.started += instance.OnAlternateAttack;
-                    @AlternateAttack.performed += instance.OnAlternateAttack;
-                    @AlternateAttack.canceled += instance.OnAlternateAttack;
-                    @ChangeView.started += instance.OnChangeView;
-                    @ChangeView.performed += instance.OnChangeView;
-                    @ChangeView.canceled += instance.OnChangeView;
-                    @ChangeUnit.started += instance.OnChangeUnit;
-                    @ChangeUnit.performed += instance.OnChangeUnit;
-                    @ChangeUnit.canceled += instance.OnChangeUnit;
-                    @CommandMenu.started += instance.OnCommandMenu;
-                    @CommandMenu.performed += instance.OnCommandMenu;
-                    @CommandMenu.canceled += instance.OnCommandMenu;
-                    @PauseMenu.started += instance.OnPauseMenu;
-                    @PauseMenu.performed += instance.OnPauseMenu;
-                    @PauseMenu.canceled += instance.OnPauseMenu;
-                    @SettingsMenu.started += instance.OnSettingsMenu;
-                    @SettingsMenu.performed += instance.OnSettingsMenu;
-                    @SettingsMenu.canceled += instance.OnSettingsMenu;
-                }
+                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
+                @MainAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAttack;
+                @MainAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAttack;
+                @MainAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAttack;
+                @AlternateAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAlternateAttack;
+                @AlternateAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAlternateAttack;
+                @AlternateAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAlternateAttack;
+                @ChangeView.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeView;
+                @ChangeView.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeView;
+                @ChangeView.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeView;
+                @ChangeUnit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeUnit;
+                @ChangeUnit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeUnit;
+                @ChangeUnit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnChangeUnit;
+                @CommandMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCommandMenu;
+                @CommandMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCommandMenu;
+                @CommandMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCommandMenu;
+                @PauseMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
+                @PauseMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
+                @PauseMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenu;
+                @SettingsMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSettingsMenu;
+                @SettingsMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSettingsMenu;
+                @SettingsMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSettingsMenu;
             }
-        }
-        public PlayerActions @Player => new PlayerActions(this);
-        private int m_KeyboardMouseSchemeIndex = -1;
-        public InputControlScheme KeyboardMouseScheme
-        {
-            get
+            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            if (instance != null)
             {
-                if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard&Mouse");
-                return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
+                @MainAttack.started += instance.OnMainAttack;
+                @MainAttack.performed += instance.OnMainAttack;
+                @MainAttack.canceled += instance.OnMainAttack;
+                @AlternateAttack.started += instance.OnAlternateAttack;
+                @AlternateAttack.performed += instance.OnAlternateAttack;
+                @AlternateAttack.canceled += instance.OnAlternateAttack;
+                @ChangeView.started += instance.OnChangeView;
+                @ChangeView.performed += instance.OnChangeView;
+                @ChangeView.canceled += instance.OnChangeView;
+                @ChangeUnit.started += instance.OnChangeUnit;
+                @ChangeUnit.performed += instance.OnChangeUnit;
+                @ChangeUnit.canceled += instance.OnChangeUnit;
+                @CommandMenu.started += instance.OnCommandMenu;
+                @CommandMenu.performed += instance.OnCommandMenu;
+                @CommandMenu.canceled += instance.OnCommandMenu;
+                @PauseMenu.started += instance.OnPauseMenu;
+                @PauseMenu.performed += instance.OnPauseMenu;
+                @PauseMenu.canceled += instance.OnPauseMenu;
+                @SettingsMenu.started += instance.OnSettingsMenu;
+                @SettingsMenu.performed += instance.OnSettingsMenu;
+                @SettingsMenu.canceled += instance.OnSettingsMenu;
             }
-        }
-        private int m_GamepadSchemeIndex = -1;
-        public InputControlScheme GamepadScheme
-        {
-            get
-            {
-                if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-                return asset.controlSchemes[m_GamepadSchemeIndex];
-            }
-        }
-        private int m_TouchSchemeIndex = -1;
-        public InputControlScheme TouchScheme
-        {
-            get
-            {
-                if (m_TouchSchemeIndex == -1) m_TouchSchemeIndex = asset.FindControlSchemeIndex("Touch");
-                return asset.controlSchemes[m_TouchSchemeIndex];
-            }
-        }
-        private int m_JoystickSchemeIndex = -1;
-        public InputControlScheme JoystickScheme
-        {
-            get
-            {
-                if (m_JoystickSchemeIndex == -1) m_JoystickSchemeIndex = asset.FindControlSchemeIndex("Joystick");
-                return asset.controlSchemes[m_JoystickSchemeIndex];
-            }
-        }
-        private int m_XRSchemeIndex = -1;
-        public InputControlScheme XRScheme
-        {
-            get
-            {
-                if (m_XRSchemeIndex == -1) m_XRSchemeIndex = asset.FindControlSchemeIndex("XR");
-                return asset.controlSchemes[m_XRSchemeIndex];
-            }
-        }
-        public interface IPlayerActions
-        {
-            void OnMove(InputAction.CallbackContext context);
-            void OnChangePosition(InputAction.CallbackContext context);
-            void OnRotate(InputAction.CallbackContext context);
-            void OnMainAttack(InputAction.CallbackContext context);
-            void OnAlternateAttack(InputAction.CallbackContext context);
-            void OnChangeView(InputAction.CallbackContext context);
-            void OnChangeUnit(InputAction.CallbackContext context);
-            void OnCommandMenu(InputAction.CallbackContext context);
-            void OnPauseMenu(InputAction.CallbackContext context);
-            void OnSettingsMenu(InputAction.CallbackContext context);
         }
     }
+    public PlayerActions @Player => new PlayerActions(this);
+    private int m_KeyboardMouseSchemeIndex = -1;
+    public InputControlScheme KeyboardMouseScheme
+    {
+        get
+        {
+            if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard&Mouse");
+            return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
+        }
+    }
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
+    {
+        get
+        {
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
+        }
+    }
+    private int m_TouchSchemeIndex = -1;
+    public InputControlScheme TouchScheme
+    {
+        get
+        {
+            if (m_TouchSchemeIndex == -1) m_TouchSchemeIndex = asset.FindControlSchemeIndex("Touch");
+            return asset.controlSchemes[m_TouchSchemeIndex];
+        }
+    }
+    private int m_JoystickSchemeIndex = -1;
+    public InputControlScheme JoystickScheme
+    {
+        get
+        {
+            if (m_JoystickSchemeIndex == -1) m_JoystickSchemeIndex = asset.FindControlSchemeIndex("Joystick");
+            return asset.controlSchemes[m_JoystickSchemeIndex];
+        }
+    }
+    private int m_XRSchemeIndex = -1;
+    public InputControlScheme XRScheme
+    {
+        get
+        {
+            if (m_XRSchemeIndex == -1) m_XRSchemeIndex = asset.FindControlSchemeIndex("XR");
+            return asset.controlSchemes[m_XRSchemeIndex];
+        }
+    }
+    public interface IPlayerActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnMainAttack(InputAction.CallbackContext context);
+        void OnAlternateAttack(InputAction.CallbackContext context);
+        void OnChangeView(InputAction.CallbackContext context);
+        void OnChangeUnit(InputAction.CallbackContext context);
+        void OnCommandMenu(InputAction.CallbackContext context);
+        void OnPauseMenu(InputAction.CallbackContext context);
+        void OnSettingsMenu(InputAction.CallbackContext context);
+    }
+}
+
 }

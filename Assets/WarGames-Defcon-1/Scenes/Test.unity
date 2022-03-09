@@ -174,7 +174,6 @@ MonoBehaviour:
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
   fireRate: 0.15
-  lastFireTime: 0
 --- !u!114 &108963751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +242,7 @@ MonoBehaviour:
   maxAmmoCount: 100
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
+  fireRate: 0
 --- !u!1 &184058386
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +377,8 @@ MonoBehaviour:
   playable: 1
   hp: 100
   armor: 0
-  speed: 10
+  moveSpeed: 10
+  rotationSpeed: 10
 --- !u!114 &344628268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,8 +392,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
-  mainWeapon: {fileID: 1799229890}
-  altWeapon: {fileID: 412014320}
+  mainWeapon: {fileID: 1799229892}
+  altWeapon: {fileID: 412014322}
 --- !u!65 &344628269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -522,6 +523,7 @@ MonoBehaviour:
   maxAmmoCount: 100
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
+  fireRate: 1
 --- !u!1 &412014320
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +575,6 @@ MonoBehaviour:
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
   fireRate: 0.15
-  lastFireTime: 0
 --- !u!114 &412014323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,7 +808,8 @@ MonoBehaviour:
   playable: 1
   hp: 100
   armor: 0
-  speed: 10
+  moveSpeed: 10
+  rotationSpeed: 10
 --- !u!114 &1006097742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,8 +823,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
-  mainWeapon: {fileID: 1025914438}
-  altWeapon: {fileID: 1699758878}
+  mainWeapon: {fileID: 1025914440}
+  altWeapon: {fileID: 1699758880}
 --- !u!65 &1006097743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -952,6 +954,7 @@ MonoBehaviour:
   maxAmmoCount: 100
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
+  fireRate: 2
 --- !u!1 &1075390238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,8 +1026,6 @@ MonoBehaviour:
   units:
   - {fileID: 1778151126}
   - {fileID: 1006097741}
-  - {fileID: 344628267}
-  - {fileID: 1825310876}
 --- !u!54 &1216301420
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1260,8 +1261,7 @@ MonoBehaviour:
   maxAmmoCount: 100
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
-  fireRate: 0.15
-  lastFireTime: 0
+  fireRate: 0.2
 --- !u!114 &1262308431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,8 +1331,7 @@ MonoBehaviour:
   maxAmmoCount: 100
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
-  fireRate: 0.15
-  lastFireTime: 0
+  fireRate: 3
 --- !u!114 &1699758881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,8 +1385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
-  mainWeapon: {fileID: 366453632}
-  altWeapon: {fileID: 1262308428}
+  mainWeapon: {fileID: 366453634}
+  altWeapon: {fileID: 1262308430}
 --- !u!65 &1778151122
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1483,7 +1482,8 @@ MonoBehaviour:
   playable: 1
   hp: 100
   armor: 0
-  speed: 10
+  moveSpeed: 1
+  rotationSpeed: 1
 --- !u!1 &1799229890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1533,7 @@ MonoBehaviour:
   maxAmmoCount: 100
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
+  fireRate: 0
 --- !u!1 &1825310875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1570,8 @@ MonoBehaviour:
   playable: 1
   hp: 100
   armor: 0
-  speed: 10
+  moveSpeed: 10
+  rotationSpeed: 10
 --- !u!114 &1825310877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1583,8 +1585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireAllowed: 1
-  mainWeapon: {fileID: 152147013}
-  altWeapon: {fileID: 108963748}
+  mainWeapon: {fileID: 152147015}
+  altWeapon: {fileID: 108963750}
 --- !u!65 &1825310878
 BoxCollider:
   m_ObjectHideFlags: 0

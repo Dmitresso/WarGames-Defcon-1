@@ -9,23 +9,29 @@ namespace WarGames_Defcon_1.Code.Scripts.Unit {
         [SerializeField] protected bool playable;
         [SerializeField] protected float hp = 100f;
         [SerializeField] protected float armor = 0f;
-        [SerializeField] protected float speed = 10f;
 
-        protected WeaponController weapon;
+        [SerializeField] protected float moveSpeed = 10f;
+        [SerializeField] protected float rotationSpeed = 10f;
+
+
+        protected WeaponController weaponController;
         #endregion
 
 
 
         #region Properties
         public bool Playable => playable;
-        public float Speed => speed;
+        public float MoveSpeed => moveSpeed;
+        public float RotationSpeed => rotationSpeed;
+
+        public WeaponController WeaponController => weaponController;
         #endregion
 
 
 
         #region Builtin Methods
         private void Awake() {
-            weapon = GetComponent<WeaponController>();
+            weaponController = GetComponent<WeaponController>();
         }
         #endregion
         

@@ -2,7 +2,7 @@
 using WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool;
 
 
-namespace WarGames_Defcon_1.Code.Scripts.Weapon {
+namespace WarGames_Defcon_1.Code.Scripts.Weapon.WeaponType {
     public class BaseWeapon : MonoBehaviour, IWeapon {
         #region Fields
         [SerializeField] private Transform muzzlePosition;
@@ -15,8 +15,16 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
         protected ProjectilePool projectilePool;
         protected AudioSource audioSource;
         protected int currentAmmoCount;
+        
+        [SerializeField] protected float fireRate;
         #endregion
 
+
+
+        #region Properties
+        public float FireRate => fireRate;
+        #endregion
+        
         
         
         #region Builtin Methods

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool;
+using WarGames_Defcon_1.Code.Scripts.Weapon.WeaponType;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Weapon {
@@ -7,14 +8,15 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
     public class RapidFireWeapon : BaseWeapon {
         #region Fields
 
-        [Header("Rapid Fire Properties")] public float fireRate = 0.15f;
-        public float lastFireTime;
+        private float lastFireTime;
         #endregion
 
 
 
         #region Builtin Methods
-
+        private void Awake() {
+            
+        }
         #endregion
 
 

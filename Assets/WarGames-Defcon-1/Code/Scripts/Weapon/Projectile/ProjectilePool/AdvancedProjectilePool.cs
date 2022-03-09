@@ -22,7 +22,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon.Projectile.ProjectilePool {
             var projectile = pooledGO.GetComponent<BaseProjectile>();
 
             if (calculateOptimalPoolSize) {
-                size = CalculatePoolSize(utilizeDistance, projectile.Speed, weapon.fireRate);
+                size = CalculatePoolSize(utilizeDistance, projectile.Speed, weapon.FireRate);
             }
             FillPool(size, pooledGO, parentGO);
         }

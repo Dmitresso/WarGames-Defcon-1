@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WarGames_Defcon_1.Code.Scripts.Input;
@@ -12,8 +13,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         #region Fields
         [SerializeField] private Transform com;
         [SerializeField] private List<Unit.Unit> units;
-        
-        
+
+        private float moveForce;
+        private float torqueForce;
+
+
         private Unit.Unit currentUnit;
         private int currentUnitIndex;
 
@@ -40,43 +44,62 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             rb = GetComponent<Rigidbody>();
             animator = GetComponent<Animator>();
 
+        }
+
+
+        private void Start() {
             CurrentUnit = units[0];
-            Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);
+            ApplyUnitParams(CurrentUnit);
+            Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);            
         }
         #endregion
 
 
 
         #region Custom Methods
-        // protected override void HandleMainAttackPerform() {
-        //     mainAttackHeld = true;
-        //     StartCoroutine(nameof(MainAttack));
-        // }
-        
-        
-        
-        protected override void OnMovePerform(InputAction.CallbackContext context) {
-            var moveDirection = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
-            Debug.Log("moveDirection: " + moveDirection);
-            rb.AddForce(moveDirection * 30f, ForceMode.Force);
+        protected override IEnumerator Move(Vector2 direction) {
+            while (moveHeld) {
+                var finalDirection = new Vector3(direction.x, 0, direction.y);
+                Debug.Log("Move: " + finalDirection);
+                var force = rb.mass * moveForce * finalDirection;
+                rb.AddForce(force, ForceMode.Force);
+                yield return new WaitForFixedUpdate();
+            }
         }
 
-        protected override void OnMoveCancel() {
-            
-        }
-        
 
-        // protected override void OnRotate(InputAction.CallbackContext context) {
-        //     Debug.Log("x: " + context.ReadValue<Vector2>().x);
-        //     rb.AddTorque(context.ReadValue<Vector2>().x * 30f * Vector3.up, ForceMode.Force);
-        // }
-        
-        
+        protected override IEnumerator Rotate(Vector2 direction) {
+            while (rotateHeld) {
+                Debug.Log("Torque: " + direction);
+                var force = rb.mass * torqueForce * direction.x * Vector3.up;
+                rb.AddTorque(force, ForceMode.Force);
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+
+        protected override IEnumerator MainAttack() {
+            while (mainAttackHeld) {
+                Debug.Log("[PlayerController] MainAttack");
+                yield return new WaitForSeconds(mainAttackDelay);
+            }
+        }
+
+
+        protected override IEnumerator AlternateAttack() {
+            while (alternateAttackHeld) {
+                Debug.Log("[PlayerController] AlternateAttack");
+                yield return new WaitForSeconds(AlternateAttackDelay);
+            }
+        }
+
+
         protected override void OnChangeUnit(InputAction.CallbackContext context) {
             currentUnitIndex++;
             if (currentUnitIndex == units.Count) currentUnitIndex = 0;
             var nextUnit = units[currentUnitIndex];
             if (nextUnit.Playable) CurrentUnit = nextUnit;
+            ApplyUnitParams(CurrentUnit);
             Debug.Log("[PlayerController] Current unit: " + currentUnit.name);
         }
 
@@ -98,6 +121,17 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         
         protected override void OnSettingsMenu(InputAction.CallbackContext context) {
             Debug.Log("[PlayerController] OnSettingsMenu");
+        }
+
+
+
+        private void ApplyUnitParams(Unit.Unit unit) {
+            moveForce = unit.MoveSpeed;
+            torqueForce = unit.RotationSpeed;
+            mainAttackDelay = unit.WeaponController.MainWeapon.FireRate;
+            alternateAttackDelay = unit.WeaponController.AltWeapon.FireRate;
+            Debug.Log("[PlayerController] moveForce: " + moveForce + "; torqueForce: " + torqueForce +
+                      "; mainAttackDelay: " + mainAttackDelay + "; alternateAttackDelay: " + alternateAttackDelay);
         }
         #endregion
     }
