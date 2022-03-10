@@ -7,32 +7,29 @@ using WarGames_Defcon_1.Code.Scripts.Input;
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Rigidbody),
-                     typeof(Animator))]
+    [RequireComponent(typeof(Animator))]
     public class PlayerController : InputController {
         #region Fields
-        [SerializeField] private Transform com;
         [SerializeField] private List<Unit.Unit> units;
 
+        private Rigidbody rb;
+        private Transform transform;
         private float moveForce;
         private float torqueForce;
-
 
         private Unit.Unit currentUnit;
         private int currentUnitIndex;
 
         
-        private Rigidbody rb;
-        private MovementController movement;
         private Animator animator;
         #endregion
 
 
 
         #region Properties
-        public Unit.Unit CurrentUnit {
+        private Unit.Unit CurrentUnit {
             get => units[currentUnitIndex];
-            private set => currentUnit = value;
+            set => currentUnit = value;
         }
         #endregion
         
@@ -41,9 +38,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         #region Builtin Methods
         protected void Awake() {
             base.Awake();
-            rb = GetComponent<Rigidbody>();
             animator = GetComponent<Animator>();
-
         }
 
 
@@ -59,8 +54,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         #region Custom Methods
         protected override IEnumerator Move(Vector2 direction) {
             while (moveHeld) {
-                var finalDirection = new Vector3(direction.x, 0, direction.y);
-                Debug.Log("Move: " + finalDirection);
+                var finalDirection = direction.y * transform.forward;
                 var force = rb.mass * moveForce * finalDirection;
                 rb.AddForce(force, ForceMode.Force);
                 yield return new WaitForFixedUpdate();
@@ -70,8 +64,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         protected override IEnumerator Rotate(Vector2 direction) {
             while (rotateHeld) {
-                Debug.Log("Torque: " + direction);
-                var force = rb.mass * torqueForce * direction.x * Vector3.up;
+                var force = rb.mass * torqueForce * direction.x * transform.up;
                 rb.AddTorque(force, ForceMode.Force);
                 yield return new WaitForFixedUpdate();
             }
@@ -123,15 +116,14 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             Debug.Log("[PlayerController] OnSettingsMenu");
         }
 
-
-
+        
         private void ApplyUnitParams(Unit.Unit unit) {
+            rb = unit.RB;
+            transform = unit.transform;
             moveForce = unit.MoveSpeed;
             torqueForce = unit.RotationSpeed;
             mainAttackDelay = unit.WeaponController.MainWeapon.FireRate;
             alternateAttackDelay = unit.WeaponController.AltWeapon.FireRate;
-            Debug.Log("[PlayerController] moveForce: " + moveForce + "; torqueForce: " + torqueForce +
-                      "; mainAttackDelay: " + mainAttackDelay + "; alternateAttackDelay: " + alternateAttackDelay);
         }
         #endregion
     }

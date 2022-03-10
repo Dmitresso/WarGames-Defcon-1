@@ -3,9 +3,15 @@ using WarGames_Defcon_1.Code.Scripts.Weapon;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Unit {
-    [RequireComponent(typeof(WeaponController))]
+    [RequireComponent(typeof(Rigidbody),
+                     typeof(WeaponController))]
     public abstract class Unit : MonoBehaviour {
         #region Fields
+
+        protected Rigidbody rb;
+        [SerializeField] private Transform com;
+
+
         [SerializeField] protected bool playable;
         [SerializeField] protected float hp = 100f;
         [SerializeField] protected float armor = 0f;
@@ -20,10 +26,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Unit {
 
 
         #region Properties
+        public Rigidbody RB => rb;
+        
         public bool Playable => playable;
         public float MoveSpeed => moveSpeed;
         public float RotationSpeed => rotationSpeed;
-
+        
         public WeaponController WeaponController => weaponController;
         #endregion
 
@@ -31,6 +39,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Unit {
 
         #region Builtin Methods
         private void Awake() {
+            rb = GetComponent<Rigidbody>();
             weaponController = GetComponent<WeaponController>();
         }
         #endregion

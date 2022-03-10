@@ -190,7 +190,7 @@ MonoBehaviour:
   size: 10
   expandable: 1
   utilizeInGet: 1
-  parentGO: {fileID: 0}
+  parentGO: {fileID: 1825310875}
   pooledGO: {fileID: 2066819770}
   calculateOptimalPoolSize: 1
 --- !u!1 &152147013
@@ -335,8 +335,8 @@ Transform:
   m_GameObject: {fileID: 184058386}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 344628271}
   - component: {fileID: 344628270}
   - component: {fileID: 344628269}
+  - component: {fileID: 344628273}
   - component: {fileID: 344628268}
   - component: {fileID: 344628267}
   m_Layer: 0
@@ -374,6 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ab30399b254ca594a4b99a97201d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  com: {fileID: 0}
   playable: 1
   hp: 100
   armor: 0
@@ -465,7 +467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344628266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.496, y: 0.207, z: 0.618}
+  m_LocalPosition: {x: -0.089, y: 0.207, z: -0.481}
   m_LocalScale: {x: 0.31057, y: 0.31057, z: 0.31057}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -474,6 +476,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &344628273
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344628266}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &366453632
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +609,7 @@ MonoBehaviour:
   size: 10
   expandable: 1
   utilizeInGet: 1
-  parentGO: {fileID: 0}
+  parentGO: {fileID: 344628266}
   pooledGO: {fileID: 2066819770}
   calculateOptimalPoolSize: 1
 --- !u!1 &705507993
@@ -784,6 +802,7 @@ GameObject:
   - component: {fileID: 1006097745}
   - component: {fileID: 1006097744}
   - component: {fileID: 1006097743}
+  - component: {fileID: 1006097747}
   - component: {fileID: 1006097742}
   - component: {fileID: 1006097741}
   m_Layer: 0
@@ -805,6 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ab30399b254ca594a4b99a97201d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  com: {fileID: 0}
   playable: 1
   hp: 100
   armor: 0
@@ -896,7 +916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006097740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.496, y: 0.207, z: 0.618}
+  m_LocalPosition: {x: -0.496, y: 0.207, z: 1.233}
   m_LocalScale: {x: 0.31057, y: 0.31057, z: 0.31057}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -905,6 +925,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1006097747
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006097740}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1025914438
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,37 +991,6 @@ MonoBehaviour:
   fireClip: {fileID: 0}
   muzzleFlash: {fileID: 0}
   fireRate: 2
---- !u!1 &1075390238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1075390239}
-  m_Layer: 0
-  m_Name: com
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1075390239
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075390238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1216301424}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1216301416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,7 +1027,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneAttackHeld: 1
-  com: {fileID: 1075390239}
   units:
   - {fileID: 1778151126}
   - {fileID: 1006097741}
@@ -1116,8 +1120,7 @@ Transform:
   m_LocalPosition: {x: 0.4, y: 0.78, z: 0.297}
   m_LocalScale: {x: 0.4, y: 1, z: 0.4}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1075390239}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1278,7 +1281,7 @@ MonoBehaviour:
   size: 10
   expandable: 1
   utilizeInGet: 1
-  parentGO: {fileID: 0}
+  parentGO: {fileID: 1778151120}
   pooledGO: {fileID: 2066819770}
   calculateOptimalPoolSize: 1
 --- !u!1 &1699758878
@@ -1348,7 +1351,7 @@ MonoBehaviour:
   size: 10
   expandable: 1
   utilizeInGet: 1
-  parentGO: {fileID: 0}
+  parentGO: {fileID: 1006097740}
   pooledGO: {fileID: 2066819770}
   calculateOptimalPoolSize: 1
 --- !u!1 &1778151120
@@ -1363,6 +1366,7 @@ GameObject:
   - component: {fileID: 1778151124}
   - component: {fileID: 1778151123}
   - component: {fileID: 1778151122}
+  - component: {fileID: 1778151127}
   - component: {fileID: 1778151121}
   - component: {fileID: 1778151126}
   m_Layer: 0
@@ -1458,8 +1462,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778151120}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.496, y: 0.207, z: 0.618}
-  m_LocalScale: {x: 0.31057, y: 0.31057, z: 0.31057}
+  m_LocalPosition: {x: 0.221, y: 0.207, z: 1.952}
+  m_LocalScale: {x: 0.5, y: 0.31057, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 366453633}
@@ -1479,11 +1483,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ab30399b254ca594a4b99a97201d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  com: {fileID: 0}
   playable: 1
   hp: 100
   armor: 0
-  moveSpeed: 1
-  rotationSpeed: 1
+  moveSpeed: 20
+  rotationSpeed: 10
+--- !u!54 &1778151127
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778151120}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1799229890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1567,7 @@ GameObject:
   - component: {fileID: 1825310880}
   - component: {fileID: 1825310879}
   - component: {fileID: 1825310878}
+  - component: {fileID: 1825310882}
   - component: {fileID: 1825310877}
   - component: {fileID: 1825310876}
   m_Layer: 0
@@ -1567,6 +1589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ab30399b254ca594a4b99a97201d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  com: {fileID: 0}
   playable: 1
   hp: 100
   armor: 0
@@ -1658,7 +1681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825310875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.496, y: 0.207, z: 0.618}
+  m_LocalPosition: {x: -0.496, y: 0.207, z: 0.262}
   m_LocalScale: {x: 0.31057, y: 0.31057, z: 0.31057}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1667,6 +1690,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1825310882
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825310875}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2066819769
 GameObject:
   m_ObjectHideFlags: 0

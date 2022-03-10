@@ -6,7 +6,8 @@ using UnityEngine.InputSystem.Utilities;
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
 
-    public partial class @Input : IInputActionCollection2, IDisposable {
+    public partial class @Input : IInputActionCollection2, IDisposable
+{
     public InputActionAsset asset { get; }
     public @Input()
     {
@@ -41,7 +42,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""id"": ""e230a516-2d1e-4dd6-841e-799112a9373f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=1.401298E-45)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -50,7 +51,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
                     ""id"": ""d7a7306d-0578-4a4d-8c6f-280af6821969"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": ""Hold(duration=1.401298E-45)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -574,5 +575,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         void OnSettingsMenu(InputAction.CallbackContext context);
     }
 }
+
 
 }
