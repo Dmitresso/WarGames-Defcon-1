@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using WarGames_Defcon_1.Code.Scripts.Camera;
 using WarGames_Defcon_1.Code.Scripts.Input;
 
 
@@ -10,17 +11,18 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [RequireComponent(typeof(Animator))]
     public class PlayerController : InputController {
         #region Fields
+        [SerializeField] public SimpleCamera camera;
         [SerializeField] private List<Unit.Unit> units;
 
+        private Unit.Unit currentUnit;
+        private int currentUnitIndex;
+        
         private Rigidbody rb;
         private Transform transform;
         private float moveForce;
         private float torqueForce;
 
-        private Unit.Unit currentUnit;
-        private int currentUnitIndex;
 
-        
         private Animator animator;
         #endregion
 
@@ -45,7 +47,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         private void Start() {
             CurrentUnit = units[0];
             ApplyUnitParams(CurrentUnit);
-            Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);            
+            // Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);            
         }
         #endregion
 
@@ -99,6 +101,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         
         protected override void OnChangeView(InputAction.CallbackContext context) {
             Debug.Log("[PlayerController] OnChangeView");
+            camera.SwitchFollowDistance();
         }
 
         

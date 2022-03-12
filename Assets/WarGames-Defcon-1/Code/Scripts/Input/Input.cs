@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
+
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     public partial class @Input : IInputActionCollection2, IDisposable {
     public InputActionAsset asset { get; }

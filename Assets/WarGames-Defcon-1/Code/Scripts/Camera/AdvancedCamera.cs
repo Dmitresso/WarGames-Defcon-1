@@ -23,19 +23,19 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
 
         #region Builtin Methods
         private void OnEnable() {
-            updateEvent.AddListener(UpdateCamera);
+            updateEvent.AddListener(Follow);
         }
 
 
         private void OnDisable() {
-            updateEvent.RemoveListener(UpdateCamera);
+            updateEvent.RemoveListener(Follow);
         }
         #endregion
 
 
 
         #region Interface Methods
-        public void UpdateCamera() {
+        public void Follow() {
             var directionToTarget = transform.position - rb.position;
             directionToTarget.y = 0f;
             var normalizedDirection = directionToTarget.normalized;
@@ -75,6 +75,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
             transform.position = targetPosition + finalHeight * Vector3.up;
 
             transform.LookAt(lookAtTarget);
+        }
+
+
+        public void Circle() {
+            
         }
         #endregion
     }

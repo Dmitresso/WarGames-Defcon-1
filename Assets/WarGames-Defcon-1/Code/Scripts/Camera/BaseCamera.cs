@@ -18,7 +18,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
 
         #region Builtin Methods
         private void FixedUpdate() {
-            if (!rb) return;
             CalculateFlatForward();
             updateEvent?.Invoke();
         }
@@ -31,6 +30,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
             targetFlatForward = rb.transform.forward;
             targetFlatForward.y = 0f;
             targetFlatForward = targetFlatForward.normalized;
+        }
+        
+        
+        protected void SwitchBehavior(UnityAction behavior) {
+            updateEvent.RemoveAllListeners();
+            updateEvent.AddListener(behavior);
         }
         #endregion
     }
