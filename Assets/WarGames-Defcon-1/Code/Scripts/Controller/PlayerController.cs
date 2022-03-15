@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,32 +8,30 @@ using WarGames_Defcon_1.Code.Scripts.Input;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
-    [DisallowMultipleComponent]
     [RequireComponent(typeof(Animator))]
     public class PlayerController : InputController {
         #region Fields
-        [SerializeField] public SimpleCamera camera;
+        public Action<Unit.Unit> onUnitChanged;
+        
+        [SerializeField] private SimpleCamera camera;
         [SerializeField] private List<Unit.Unit> units;
 
-        private Unit.Unit currentUnit;
+        
         private int currentUnitIndex;
         
+
         private Rigidbody rb;
         private Transform transform;
         private float moveForce;
         private float torqueForce;
-
-
+        
         private Animator animator;
         #endregion
 
 
 
         #region Properties
-        private Unit.Unit CurrentUnit {
-            get => units[currentUnitIndex];
-            set => currentUnit = value;
-        }
+        private Unit.Unit CurrentUnit { get; set; }
         #endregion
         
         
@@ -45,9 +44,22 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         private void Start() {
-            CurrentUnit = units[0];
-            ApplyUnitParams(CurrentUnit);
-            // Debug.Log("[PlayerController] currentUnit.name: " + currentUnit.name);            
+            onUnitChanged += SwitchUnit;
+            
+            if (units.Count > 0) {
+                for (var i = 0; i < units.Capacity - 1; i++) {
+                    if (units[i] != null) {
+                        currentUnitIndex = i;
+                        CurrentUnit = units[i];
+                        ApplyUnitParams(CurrentUnit);
+                        Debug.Log("[PlayerController] currentUnit.name: " + CurrentUnit.name);
+                        break;
+                    }
+                    if (i == units.Capacity - 1 && CurrentUnit == null) Debug.LogError("[PlayerController] \"units\" list doesn't contain any Unit.");
+                }
+            }
+
+            // onUnitChange += camera.
         }
         #endregion
 
@@ -90,17 +102,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         protected override void OnChangeUnit(InputAction.CallbackContext context) {
-            currentUnitIndex++;
-            if (currentUnitIndex == units.Count) currentUnitIndex = 0;
-            var nextUnit = units[currentUnitIndex];
-            if (nextUnit.Playable) CurrentUnit = nextUnit;
-            ApplyUnitParams(CurrentUnit);
-            Debug.Log("[PlayerController] Current unit: " + currentUnit.name);
+            onUnitChanged?.Invoke(CurrentUnit);
+            
+            Debug.Log("[PlayerController] Current unit: " + CurrentUnit.name);
         }
 
         
         protected override void OnChangeView(InputAction.CallbackContext context) {
-            Debug.Log("[PlayerController] OnChangeView");
             camera.SwitchFollowDistance();
         }
 
@@ -120,6 +128,17 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         }
 
         
+        private void SwitchUnit(Unit.Unit unit) {
+            if (units.Count <= 1) return;
+            currentUnitIndex++;
+            if (currentUnitIndex == units.Capacity) currentUnitIndex = 0;
+                
+            var nextUnit = units[currentUnitIndex];
+            if (nextUnit != null && nextUnit.Playable) CurrentUnit = nextUnit;
+            ApplyUnitParams(unit);
+        }
+
+
         private void ApplyUnitParams(Unit.Unit unit) {
             rb = unit.RB;
             transform = unit.transform;

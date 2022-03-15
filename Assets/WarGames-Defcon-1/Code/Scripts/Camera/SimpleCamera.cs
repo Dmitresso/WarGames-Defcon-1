@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using WarGames_Defcon_1.Code.Scripts.Controller;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Camera {
@@ -10,6 +11,9 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
 
         [SerializeField] private float smoothSpeed = 0.3f;
         [SerializeField] private float circleSpeed = 0.1f;
+
+        
+        private PlayerController playerController;
         #endregion
 
 
@@ -44,6 +48,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
 
         protected void OnDisable() {
             updateEvent.RemoveListener(Follow);
+        }
+
+
+        private void Start() {
+            playerController = FindObjectOfType<PlayerController>();
+            playerController.onUnitChanged += SwitchTarget;
         }
         #endregion
         

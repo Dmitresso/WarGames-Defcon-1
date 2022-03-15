@@ -37,6 +37,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
             updateEvent.RemoveAllListeners();
             updateEvent.AddListener(behavior);
         }
+
+
+        protected void SwitchTarget(Unit.Unit unit) {
+            rb = unit.RB;
+            lookAtTarget = unit.transform;
+        }
         #endregion
     }
 }
