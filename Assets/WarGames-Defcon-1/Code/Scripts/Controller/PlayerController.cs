@@ -9,7 +9,7 @@ using WarGames_Defcon_1.Code.Scripts.Input;
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [RequireComponent(typeof(Animator))]
-    public class PlayerController : InputController {
+    public class PlayerController : BaseInput {
         #region Fields
         public Action<Unit.Unit> onUnitChanged;
         
@@ -103,7 +103,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         protected override void OnChangeUnit(InputAction.CallbackContext context) {
             onUnitChanged?.Invoke(CurrentUnit);
-            
             Debug.Log("[PlayerController] Current unit: " + CurrentUnit.name);
         }
 
@@ -118,8 +117,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         }
 
         
-        protected override void OnPauseMenu(InputAction.CallbackContext context) {
-            Debug.Log("[PlayerController] OnPauseMenu");
+        protected override void OnCommandCenterMenu(InputAction.CallbackContext context) {
+            Debug.Log("[PlayerController] OnCommandCenterMenu");
         }
 
         

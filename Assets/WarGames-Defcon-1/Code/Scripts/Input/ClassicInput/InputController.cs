@@ -61,10 +61,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Input.ClassicInput {
                     //GetComponent<XboxInput>().enabled = false;
                     break;
                 case Scripts.Input.InputType.InputType.Xbox:
-                    input = GetComponent<XboxInput>();
+                    //input = GetComponent<XboxInput>();
                     break;
                 case Scripts.Input.InputType.InputType.Mobile:
-                    input = GetComponent<MobileInput>();
+                    //input = GetComponent<MobileInput>();
                     break;
             }
             

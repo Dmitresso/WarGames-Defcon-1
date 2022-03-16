@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using WarGames_Defcon_1.Code.Scripts.Input;
 using WarGames_Defcon_1.Code.Scripts.Weapon.WeaponType;
 
 
@@ -37,7 +38,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Weapon {
 
 
         #region Custom Methods
-        public void UpdateWeapon(Input.Input input) {
+        public void UpdateWeapon(BaseInput input) {
             if (!fireAllowed) return;
             // if (input.MainAttackButton) mainIWeapon.WeaponFire();
             // if (input.AltAttackButton) altIWeapon.WeaponFire();
