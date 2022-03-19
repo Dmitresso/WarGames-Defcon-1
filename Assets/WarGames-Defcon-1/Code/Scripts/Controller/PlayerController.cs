@@ -4,22 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WarGames_Defcon_1.Code.Scripts.Camera;
+using WarGames_Defcon_1.Code.Scripts.Game_Management;
 using WarGames_Defcon_1.Code.Scripts.Input;
+using WarGames_Defcon_1.Code.Scripts.Service;
+using WarGames_Defcon_1.Code.Scripts.Unit;
+using WarGames_Defcon_1.Code.Scripts.Utils;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
-    [RequireComponent(typeof(Animator))]
+    [DefaultExecutionOrder(-50)]
+    [RequireComponent(typeof(DontDestroyOnLoad),
+                     typeof(PlayerInput),
+                     typeof(Animator))]
     public class PlayerController : BaseInput {
         #region Fields
-        public Action<Unit.Unit> onUnitChanged;
-        
+        public Action<Vehicle> onUnitChanged;
+
         [SerializeField] private SimpleCamera camera;
-        [SerializeField] private List<Unit.Unit> units;
 
-        
+        private LevelManager currentLevelManager;
+        private List<Vehicle> units;
         private int currentUnitIndex;
-        
-
         private Rigidbody rb;
         private Transform transform;
         private float moveForce;
@@ -31,7 +36,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         #region Properties
-        private Unit.Unit CurrentUnit { get; set; }
+        private Vehicle CurrentUnit { get; set; }
+        private LevelManager CurrentLevelManager => GameObject.FindGameObjectWithTag(Tags.GM.LevelManager).GetComponent<LevelManager>();
         #endregion
         
         
@@ -40,11 +46,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         protected void Awake() {
             base.Awake();
             animator = GetComponent<Animator>();
+            
+            onUnitChanged += SwitchUnit;
         }
 
 
         private void Start() {
-            onUnitChanged += SwitchUnit;
+            units = (List<Vehicle>) CurrentLevelManager.LevelVehicles;
             
             if (units.Count > 0) {
                 for (var i = 0; i < units.Capacity - 1; i++) {
@@ -58,8 +66,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
                     if (i == units.Capacity - 1 && CurrentUnit == null) Debug.LogError("[PlayerController] \"units\" list doesn't contain any Unit.");
                 }
             }
-
-            // onUnitChange += camera.
         }
         #endregion
 
@@ -103,7 +109,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         protected override void OnChangeUnit(InputAction.CallbackContext context) {
             onUnitChanged?.Invoke(CurrentUnit);
-            Debug.Log("[PlayerController] Current unit: " + CurrentUnit.name);
         }
 
         
@@ -127,7 +132,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         }
 
         
-        private void SwitchUnit(Unit.Unit unit) {
+        private void SwitchUnit(Vehicle unit) {
             if (units.Count <= 1) return;
             currentUnitIndex++;
             if (currentUnitIndex == units.Capacity) currentUnitIndex = 0;

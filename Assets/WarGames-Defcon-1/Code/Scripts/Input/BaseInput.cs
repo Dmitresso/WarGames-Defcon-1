@@ -87,13 +87,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         
         private void OnEnable() {
-            Input.Enable();
+            Input.UI.Enable();
         }
 
         
         private void OnDisable() {
             StopAllCoroutines();
-            Input.Disable();
+            Input.UI.Disable();
         }
         #endregion
 

@@ -3,26 +3,26 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using WarGames_Defcon_1.Code.Scripts.Controller;
 using WarGames_Defcon_1.Code.Scripts.Service;
+using WarGames_Defcon_1.Code.Scripts.Utils;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
     public static class SceneManager {
         private static AsyncOperation loadScene;
-        private static GameManager loadSceneGM, gameSceneGM;
+        private static LevelManager loadSceneLM, gameSceneLM;
         private static Coroutine loadScreenLoadingCoroutine;
 
-    
+
         static SceneManager() { }
 
         
-        private static GameManager GetSceneGameManager(string sceneName) {
+        private static LevelManager GetSceneLevelManager(string sceneName) {
             var gameObjects = UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName).GetRootGameObjects();
             foreach (var go in gameObjects)
                 if (go.CompareTag(Tags.GM.GameManager))
-                    return go.GetComponent<GameManager>();
-            throw new NullReferenceException("There's no \"Game Manager\" object on \"" + sceneName + "\" scene." );
+                    return go.GetComponent<LevelManager>();
+            throw new NullReferenceException("There's no \"Level Manager\" object on \"" + sceneName + "\" scene." );
         }
         
         
@@ -42,12 +42,12 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
         
         public static void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
             if (scene.name == Data.Scenes.Load) {
-                loadSceneGM = GetSceneGameManager(Data.Scenes.Load);
+                loadSceneLM = GetSceneLevelManager(Data.Scenes.Load);
                 // loadScreenLoadingCoroutine = loadSceneGM.StartCoroutine(loadSceneGM.loadScreen.StartLoading());
                 // loadSceneGM.loadScreen.LoadingFinished += ActivateGameScene;
             }
             else {
-                if (loadScreenLoadingCoroutine != null) GetSceneGameManager(scene.name).StopCoroutine(loadScreenLoadingCoroutine);
+                if (loadScreenLoadingCoroutine != null) GetSceneLevelManager(scene.name).StopCoroutine(loadScreenLoadingCoroutine);
             }
         }
         

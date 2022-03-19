@@ -5,6 +5,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Service {
         
         public struct GM {
             public const string GameManager = "GameController";
+            public const string LevelManager = "LevelManager";
         }
     }
 }

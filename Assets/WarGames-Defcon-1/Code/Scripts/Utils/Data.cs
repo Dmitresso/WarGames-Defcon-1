@@ -2,9 +2,8 @@
 using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts.Game_Management;
 
-
-namespace WarGames_Defcon_1.Code.Scripts.Service {
-    [DefaultExecutionOrder(-100)]
+namespace WarGames_Defcon_1.Code.Scripts.Utils {
+    [DefaultExecutionOrder(-50)]
     public static class Data {
         public static void Init() {
             Resources.Init();
