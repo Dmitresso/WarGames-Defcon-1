@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9056fbba3274458cbf6d11f4a1a101ec, type: 3}
+  m_Name: Level 1 - Falkland Islands
+  m_EditorClassIdentifier: 
+  levelScene: {fileID: 102900000, guid: 981db38d8d9d73a48bd16a5e4d39592f, type: 3}
+  description: 
+  levelUnits: []
+  textsENG:
+    briefing: {fileID: 4900000, guid: d196e8bc554a9f0448bb2ad13307e4b0, type: 3}
+    objectives: {fileID: 4900000, guid: 0c0c508262ddebb4497ef0e3b4b99c74, type: 3}
+    vehicles: {fileID: 4900000, guid: fecb5f89ad2a4124693f137efb0c8b56, type: 3}
+    descriptions: []
+    email:
+    - {fileID: 4900000, guid: 83d5fde947c943144967ff3fbbadf123, type: 3}
+    - {fileID: 4900000, guid: 89fbf4ba2631f3d4aa1fae11df810bc0, type: 3}
+  textsRU:
+    briefing: {fileID: 0}
+    objectives: {fileID: 0}
+    vehicles: {fileID: 0}
+    descriptions: []
+    email: []

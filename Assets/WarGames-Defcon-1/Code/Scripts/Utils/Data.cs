@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using WarGames_Defcon_1.Code.Scripts.Game_Management;
+using UnityEngine.SceneManagement;
+using SceneManager = WarGames_Defcon_1.Code.Scripts.Scene_Management.SceneManager;
 
 namespace WarGames_Defcon_1.Code.Scripts.Utils {
     [DefaultExecutionOrder(-50)]
@@ -67,39 +68,22 @@ namespace WarGames_Defcon_1.Code.Scripts.Utils {
 
 
         public struct Scenes {
+            public static readonly List<Scene> scenes = SceneManager.GetScenesNamesList();
+
             public static readonly string
+                Boot,
                 Main,
-                Load,
-                Game,
-                Level1;
+                Level1N,
+                Level1W;
 
             static Scenes() {
-                Main = SceneManager.GetSceneNameByIndex(0);
-                Load = SceneManager.GetSceneNameByIndex(1);
-                Game = SceneManager.GetSceneNameByIndex(2);
-                Level1 = SceneManager.GetSceneNameByIndex(3);
+                Boot = scenes[0].name;
+                Main = scenes[1].name;
+                Level1N = scenes[2].name;
+                Level1W = scenes[3].name;
             }
 
-            private static string gameToLoad;
-
-            public static string GameToLoad {
-                get => gameToLoad;
-                set {
-                    var scenesList = "";
-                    var scenes = typeof(Scenes).GetFields();
-                    for (int i = 0; i < scenes.Length; i++) {
-                        string tmp = i == scenes.Length - 1 ? "." : ", ";
-                        string.Concat(scenesList, (string)scenes[i].GetValue(null) + tmp);
-                        if (value == (string)scenes[i].GetValue(null)) gameToLoad = value;
-                    }
-
-                    if (gameToLoad == null) {
-                        throw new Exception("Attempt of setting \"GameToLoad\" string value to \"" +
-                                            value + "\" didn't find matching scene name in \"Scenes\" struct. " +
-                                            "Available scenes: " + scenes);
-                    }
-                }
-            }
+            public static string SceneToLoad { get; set; }
         }
     }
 }

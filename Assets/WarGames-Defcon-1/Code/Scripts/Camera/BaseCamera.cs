@@ -3,10 +3,11 @@ using UnityEngine.Events;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Camera {
+    [RequireComponent(typeof(UnityEngine.Camera))]
     public class BaseCamera : MonoBehaviour {
         #region Fields
-        public Rigidbody rb;
-        public Transform lookAtTarget;
+        protected Rigidbody rb;
+        protected Transform lookAtTarget;
         
         protected Vector3 targetPosition;
         protected Vector3 refVelocity;

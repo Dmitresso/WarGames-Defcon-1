@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,6 +8,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
     [DisallowMultipleComponent]
     public abstract class BaseInput : MonoBehaviour {
         #region Fields
+        [SerializeField] private ActionMap currentActionMap = ActionMap.UI;
         [SerializeField] protected bool oneAttackHeld = true;
         [Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;
         [Range(minDelay, maxDelay)] protected float alternateAttackDelay = 1f;
@@ -87,13 +89,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         
         private void OnEnable() {
-            Input.UI.Enable();
+            Input.Enable();
+            SwitchActionMap(currentActionMap);
         }
 
         
         private void OnDisable() {
             StopAllCoroutines();
-            Input.UI.Disable();
         }
         #endregion
 
@@ -187,6 +189,22 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
         
         protected virtual void OnSettingsMenu(InputAction.CallbackContext context) { }
+        
+        
+        public void SwitchActionMap(ActionMap map) {
+            switch (map) {
+                case ActionMap.UI:
+                    Input.Player.Disable();
+                    Input.UI.Enable();
+                    break;
+                case ActionMap.Player:
+                    Input.Player.Enable();
+                    Input.UI.Disable();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(map), map, "No such map registered in ActionMap enum.");
+            }
+        }
         #endregion
     }
 }

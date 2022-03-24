@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 using WarGames_Defcon_1.Code.Scripts.Camera;
 using WarGames_Defcon_1.Code.Scripts.Game_Management;
 using WarGames_Defcon_1.Code.Scripts.Input;
-using WarGames_Defcon_1.Code.Scripts.Service;
 using WarGames_Defcon_1.Code.Scripts.Unit;
 using WarGames_Defcon_1.Code.Scripts.Utils;
 
@@ -19,8 +18,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
     public class PlayerController : BaseInput {
         #region Fields
         public Action<Vehicle> onUnitChanged;
-
-        [SerializeField] private SimpleCamera camera;
+        private SimpleCamera camera;
 
         private LevelManager currentLevelManager;
         private List<Vehicle> units;
@@ -37,7 +35,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
         #region Properties
         private Vehicle CurrentUnit { get; set; }
-        private LevelManager CurrentLevelManager => GameObject.FindGameObjectWithTag(Tags.GM.LevelManager).GetComponent<LevelManager>();
+        //private LevelManager сurrentLevelManager => GameObject.FindGameObjectWithTag(Tags.GM.LevelManager).GetComponent<LevelManager>();
         #endregion
         
         
@@ -46,13 +44,19 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         protected void Awake() {
             base.Awake();
             animator = GetComponent<Animator>();
-            
+
             onUnitChanged += SwitchUnit;
+            
+            camera = GameObject.FindGameObjectWithTag(Tags.GM.CameraController).GetComponent<CameraController>().PlayerCamera;
         }
 
 
         private void Start() {
-            units = (List<Vehicle>) CurrentLevelManager.LevelVehicles;
+            // units = (List<Vehicle>) сurrentLevelManager.LevelVehicles;
+            return;
+            
+            units = (List<Vehicle>) GameManager.Instance.GetActiveSceneLevelManager().LevelVehicles;
+            
             
             if (units.Count > 0) {
                 for (var i = 0; i < units.Capacity - 1; i++) {

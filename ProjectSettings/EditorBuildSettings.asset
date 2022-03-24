@@ -4,6 +4,18 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/WarGames-Defcon-1/Scenes/Boot.unity
+    guid: fe4cde801d2ff684b909c9cb2edfa062
+  - enabled: 1
+    path: Assets/WarGames-Defcon-1/Scenes/MainMenu.unity
+    guid: 8c8202274349dd243bc5dbb3878bc93d
+  - enabled: 1
+    path: Assets/WarGames-Defcon-1/Scenes/Levels/NORAD/Level 1 - Carolina, USA.unity
+    guid: edcc3472b97bcae4e86cf901d78aed62
+  - enabled: 1
+    path: Assets/WarGames-Defcon-1/Scenes/Levels/W.O.P.R/Level 1 - Falkland Islands.unity
+    guid: 981db38d8d9d73a48bd16a5e4d39592f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 96311e2cc12ec8d4bb8e346baced7bae, type: 2}

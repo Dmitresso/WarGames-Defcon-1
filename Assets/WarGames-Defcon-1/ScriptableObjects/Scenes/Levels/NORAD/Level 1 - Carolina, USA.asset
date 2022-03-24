@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9056fbba3274458cbf6d11f4a1a101ec, type: 3}
+  m_Name: Level 1 - Carolina, USA
+  m_EditorClassIdentifier: 
+  levelScene: {fileID: 102900000, guid: edcc3472b97bcae4e86cf901d78aed62, type: 3}
+  description: 
+  levelUnits: []
+  textsENG:
+    briefing: {fileID: 4900000, guid: b697bf105abf2f349af3241923500340, type: 3}
+    objectives: {fileID: 4900000, guid: 468d64d63de15c7499e6faf7d2baddc1, type: 3}
+    vehicles: {fileID: 4900000, guid: 596b046e1da3fb6419b32527fed589bd, type: 3}
+    descriptions: []
+    email:
+    - {fileID: 4900000, guid: 7046cc65f9b4e0a45bbbdf2cd1544235, type: 3}
+    - {fileID: 4900000, guid: 57980b25d6152a34182c5fa7c530c0d4, type: 3}
+  textsRU:
+    briefing: {fileID: 0}
+    objectives: {fileID: 0}
+    vehicles: {fileID: 0}
+    descriptions: []
+    email: []
