@@ -33,9 +33,9 @@ namespace WarGames_Defcon_1.Code.Scripts.Scene_Management {
 
         
         public static IEnumerator LoadScene(string sceneName) {
-            Data.Scenes.SceneToLoad = sceneName;
+            //Data.Scenes.SceneToLoad = sceneName;
             yield return new WaitForSeconds(0.1f);
-            loadScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(Data.Scenes.SceneToLoad);
+            //loadScene = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(Data.Scenes.SceneToLoad);
             loadScene.allowSceneActivation = false;
         }
 

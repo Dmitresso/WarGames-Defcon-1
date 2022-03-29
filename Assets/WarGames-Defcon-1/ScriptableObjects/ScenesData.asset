@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d18b47466e44933b69061eb129cdf68, type: 3}
   m_Name: ScenesData
   m_EditorClassIdentifier: 
-  allScenes:
-  - {fileID: 0}
-  - {fileID: 0}
-  noradLevels: []
-  woprLevels: []
+  boot: {fileID: 102900000, guid: fe4cde801d2ff684b909c9cb2edfa062, type: 3}
+  mainMenu: {fileID: 102900000, guid: 8c8202274349dd243bc5dbb3878bc93d, type: 3}
+  noradLevels:
+  - {fileID: 11400000, guid: 587a7b24a6f97a64e83c2a1c6545edbd, type: 2}
+  woprLevels:
+  - {fileID: 11400000, guid: a2357afcf0eee6c4ab3e0f2a25b58fbb, type: 2}

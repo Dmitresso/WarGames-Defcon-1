@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9056fbba3274458cbf6d11f4a1a101ec, type: 3}
   m_Name: Level 1 - Falkland Islands
   m_EditorClassIdentifier: 
-  levelScene: {fileID: 102900000, guid: 981db38d8d9d73a48bd16a5e4d39592f, type: 3}
+  gameScene: {fileID: 102900000, guid: 981db38d8d9d73a48bd16a5e4d39592f, type: 3}
   description: 
   levelUnits: []
   textsENG:

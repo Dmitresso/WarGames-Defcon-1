@@ -8,7 +8,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
     [DisallowMultipleComponent]
     public abstract class BaseInput : MonoBehaviour {
         #region Fields
-        [SerializeField] private ActionMap currentActionMap = ActionMap.UI;
+        [SerializeField] private ActionMap currentActionMap = ActionMap.Player;
         [SerializeField] protected bool oneAttackHeld = true;
         [Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;
         [Range(minDelay, maxDelay)] protected float alternateAttackDelay = 1f;

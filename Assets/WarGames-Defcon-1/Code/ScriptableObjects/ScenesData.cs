@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using WarGames_Defcon_1.Code.Scripts;
 
 
 namespace WarGames_Defcon_1.Code.ScriptableObjects {
     public class ScenesData : ScriptableObject {
-        public List<GameScene> allScenes;
+        public SceneAsset boot;
+        public SceneAsset mainMenu;
         public List<GameLevel> noradLevels;
         public List<GameLevel> woprLevels;
 

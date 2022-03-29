@@ -22,8 +22,8 @@ namespace WarGames_Defcon_1.Code.Scripts.Input.ClassicInput {
 
         #region Builtin Methods
         private void Awake() {
-            keys.Horizontal = Data.Settings.Input.Horizontal;
-            keys.Vertical = Data.Settings.Input.Vertical;
+            // keys.Horizontal = Data.Settings.Input.Horizontal;
+            // keys.Vertical = Data.Settings.Input.Vertical;
         }
 
 

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using WarGames_Defcon_1.Code.Scripts.Camera;
-using WarGames_Defcon_1.Code.Scripts.Game_Management;
 using WarGames_Defcon_1.Code.Scripts.Input;
 using WarGames_Defcon_1.Code.Scripts.Unit;
 using WarGames_Defcon_1.Code.Scripts.Utils;
@@ -12,15 +11,13 @@ using WarGames_Defcon_1.Code.Scripts.Utils;
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [DefaultExecutionOrder(-50)]
-    [RequireComponent(typeof(DontDestroyOnLoad),
-                     typeof(PlayerInput),
+    [RequireComponent(typeof(PlayerInput),
                      typeof(Animator))]
     public class PlayerController : BaseInput {
         #region Fields
         public Action<Vehicle> onUnitChanged;
         private SimpleCamera camera;
 
-        private LevelManager currentLevelManager;
         private List<Vehicle> units;
         private int currentUnitIndex;
         private Rigidbody rb;
@@ -55,7 +52,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             // units = (List<Vehicle>) сurrentLevelManager.LevelVehicles;
             return;
             
-            units = (List<Vehicle>) GameManager.Instance.GetActiveSceneLevelManager().LevelVehicles;
+            //units = (List<Vehicle>) GameManager.Instance.GetActiveSceneLevelManager().LevelVehicles;
             
             
             if (units.Count > 0) {
@@ -96,6 +93,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         protected override IEnumerator MainAttack() {
+            Debug.Log("Root: " + transform.root.gameObject.name);
             while (mainAttackHeld) {
                 Debug.Log("[PlayerController] MainAttack");
                 yield return new WaitForSeconds(mainAttackDelay);

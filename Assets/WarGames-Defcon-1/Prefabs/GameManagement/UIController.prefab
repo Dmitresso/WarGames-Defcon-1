@@ -3511,7 +3511,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3502467321634680432}
   - component: {fileID: 3502467321634680439}
-  - component: {fileID: 4609605756676954282}
   m_Layer: 0
   m_Name: UIController
   m_TagString: UIController
@@ -3549,6 +3548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a915467a88697674e9266a06559ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausable: 1
+  gamePaused: 0
   mainMenu: {fileID: 3502467320080263576}
   optionsMenu: {fileID: 3502467320368130999}
   commandMenu: {fileID: 3502467320067564684}
@@ -3556,19 +3557,6 @@ MonoBehaviour:
   settingsMenu: {fileID: 3502467320273727744}
   exitMenu: {fileID: 3502467321077714261}
   loadingScreen: {fileID: 3502467321566399367}
---- !u!114 &4609605756676954282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3502467321634680433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb5f60427a7a43a58c939323812c3181, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
 --- !u!1 &3502467321701755702
 GameObject:
   m_ObjectHideFlags: 0

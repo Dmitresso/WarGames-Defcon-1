@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bc6e14c4884fe7baf4c01d1b54b013, type: 3}
-  m_Name: MainMenu
+  m_Script: {fileID: 11500000, guid: 8cda472ab09c49dab27f791a8eda944e, type: 3}
+  m_Name: GameSettings
   m_EditorClassIdentifier: 
-  levelScene: {fileID: 102900000, guid: 8c8202274349dd243bc5dbb3878bc93d, type: 3}
-  description: 
+  language: 0
+  fraction: 0
+  musicVolume: 0
+  sfxVolume: 0
+  voiceVolume: 0
