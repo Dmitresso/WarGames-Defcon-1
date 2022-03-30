@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,13 +19,14 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
         [SerializeField] private GameObject[] systemPrefabs;
 
         private List<GameObject> instancedSystemPrefabs = new ();
+        private LevelManager currentLevelManager;
         private GameLevel currentLevel;
         private ICamera activeCamera;
         #endregion
 
 
 
-        #region Builtin Methods
+        #region BUILTIN METHODS
         private void Awake() {
             InstantiateSystemPrefabs();
         }
@@ -32,12 +34,35 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
 
         private void Start() {
             SceneManager.LoadScene(scenesData.mainMenu.name);
+            
+        }
+
+
+        private void OnEnable() {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        
+        
+        private void OnDisable() {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
         #endregion
+
+
+
+        #region CUSTOM METHODS
+        protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            
+            
+            if (scene.name == scenesData.mainMenu.name) {
+                
+            }
+
+            var currentLevelManagerGO = FindObjectOfType<LevelManager>();
+            if (currentLevelManagerGO == null) return;
+        }
         
         
-        
-        #region Custom Methods
         private void InstantiateSystemPrefabs() {
             foreach (var go in systemPrefabs) {
                 var prefabInstance = Instantiate(go);

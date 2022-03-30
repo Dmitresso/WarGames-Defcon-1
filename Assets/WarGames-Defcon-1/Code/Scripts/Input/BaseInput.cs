@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     [DisallowMultipleComponent]
     public abstract class BaseInput : MonoBehaviour {
-        #region Fields
+        #region FIELDS
         [SerializeField] private ActionMap currentActionMap = ActionMap.Player;
         [SerializeField] protected bool oneAttackHeld = true;
         [Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;
@@ -28,14 +29,14 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
 
 
 
-        #region Constants
+        #region CONSTANTS
         private const float minDelay = 0.1f;
         private const float maxDelay = 1.5f;
         #endregion
         
 
         
-        #region Properties
+        #region PROPERTIES
         public float MainAttackDelay {
             get => mainAttackDelay;
             set {
@@ -47,6 +48,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             }
         }
 
+        
         public float AlternateAttackDelay {
             get => alternateAttackDelay;
             set {
@@ -58,12 +60,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
             }
         }
         
+        
         public InputController Input { get; private set; }
         #endregion
 
         
 
-        #region Builtin Methods
+        #region BUILTIN METHODS
         protected void Awake() {
             Input = new InputController();
             
@@ -88,20 +91,43 @@ namespace WarGames_Defcon_1.Code.Scripts.Input {
         }
 
         
-        private void OnEnable() {
+        protected void OnEnable() {
             Input.Enable();
-            SwitchActionMap(currentActionMap);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         
-        private void OnDisable() {
+        protected void OnDisable() {
+            Input.Disable();
+            SceneManager.sceneLoaded -= OnSceneLoaded;
             StopAllCoroutines();
+        }
+
+
+        protected void Start() {
+            SwitchActionMap(currentActionMap);
+        }
+
+
+        protected void OnValidate() {
+            if (Input == null) return;
+            switch (currentActionMap) {
+                case ActionMap.Player:
+                    SwitchActionMap(ActionMap.Player);
+                    break;
+                case ActionMap.UI:
+                    SwitchActionMap(ActionMap.UI);
+                    break;
+            }
         }
         #endregion
 
 
 
-        #region Custom Methods
+        #region CUSTOM METHODS
+        protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) { }
+        
+        
         protected virtual void OnMovePerform(InputAction.CallbackContext context) {
             moveHeld = true;
             moveCoroutine = StartCoroutine(Move(context.ReadValue<Vector2>()));

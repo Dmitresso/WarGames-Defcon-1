@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using WarGames_Defcon_1.Code.Scripts.Camera;
 using WarGames_Defcon_1.Code.Scripts.Input;
 using WarGames_Defcon_1.Code.Scripts.Unit;
@@ -18,7 +19,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         public Action<Vehicle> onUnitChanged;
         private SimpleCamera camera;
 
-        private List<Vehicle> units;
+        private List<Vehicle> vehicles;
         private int currentUnitIndex;
         private Rigidbody rb;
         private Transform transform;
@@ -31,13 +32,18 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         #region Properties
+        public List<Vehicle> Vehicles {
+            set {
+                vehicles = value;
+                InitUnits(vehicles);
+            }
+        }
         private Vehicle CurrentUnit { get; set; }
-        //private LevelManager сurrentLevelManager => GameObject.FindGameObjectWithTag(Tags.GM.LevelManager).GetComponent<LevelManager>();
         #endregion
         
         
 
-        #region Builtin Methods
+        #region BUILTIN METHODS
         protected void Awake() {
             base.Awake();
             animator = GetComponent<Animator>();
@@ -48,31 +54,24 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         }
 
 
-        private void Start() {
-            // units = (List<Vehicle>) сurrentLevelManager.LevelVehicles;
-            return;
-            
-            //units = (List<Vehicle>) GameManager.Instance.GetActiveSceneLevelManager().LevelVehicles;
-            
-            
-            if (units.Count > 0) {
-                for (var i = 0; i < units.Capacity - 1; i++) {
-                    if (units[i] != null) {
-                        currentUnitIndex = i;
-                        CurrentUnit = units[i];
-                        ApplyUnitParams(CurrentUnit);
-                        Debug.Log("[PlayerController] currentUnit.name: " + CurrentUnit.name);
-                        break;
-                    }
-                    if (i == units.Capacity - 1 && CurrentUnit == null) Debug.LogError("[PlayerController] \"units\" list doesn't contain any Unit.");
-                }
-            }
+        protected void OnEnable() {
+            base.OnEnable();
+        }
+
+
+        protected void OnValidate() {
+            base.OnValidate();
+        }
+        
+        
+        protected void Start() {
+            base.Start();
         }
         #endregion
 
 
 
-        #region Custom Methods
+        #region CUSTOM METHODS
         protected override IEnumerator Move(Vector2 direction) {
             while (moveHeld) {
                 var finalDirection = direction.y * transform.forward;
@@ -128,18 +127,42 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
             Debug.Log("[PlayerController] OnCommandCenterMenu");
         }
 
-        
+
         protected override void OnSettingsMenu(InputAction.CallbackContext context) {
             Debug.Log("[PlayerController] OnSettingsMenu");
         }
 
+
+        protected override void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
+            
+        }
+        
+        
+        private void InitUnits(List<Vehicle> vehicles) {
+            if (vehicles.Count <= 0) {
+                Debug.LogError("[PlayerController] \"units\" list is empty.");
+                return;
+            }
+            
+            for (var i = 0; i < vehicles.Capacity - 1; i++) {
+                if (vehicles[i] != null) {
+                    currentUnitIndex = i;
+                    CurrentUnit = vehicles[i];
+                    ApplyUnitParams(CurrentUnit);
+                    Debug.Log("[PlayerController] currentUnit.name: " + CurrentUnit.name);
+                    break;
+                }
+                if (i == vehicles.Capacity - 1 && CurrentUnit == null) Debug.LogError("[PlayerController] \"units\" list doesn't contain any Unit.");
+            }
+        }
+        
         
         private void SwitchUnit(Vehicle unit) {
-            if (units.Count <= 1) return;
+            if (vehicles.Count <= 1) return;
             currentUnitIndex++;
-            if (currentUnitIndex == units.Capacity) currentUnitIndex = 0;
+            if (currentUnitIndex == vehicles.Capacity) currentUnitIndex = 0;
                 
-            var nextUnit = units[currentUnitIndex];
+            var nextUnit = vehicles[currentUnitIndex];
             if (nextUnit != null && nextUnit.Playable) CurrentUnit = nextUnit;
             ApplyUnitParams(unit);
         }

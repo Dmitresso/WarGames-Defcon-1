@@ -16,7 +16,7 @@ namespace WarGames_Defcon_1.Code.Scripts.UI {
         [SerializeField] private CommandCenterMenu commandCenterMenu;
         [SerializeField] private SettingsMenu settingsMenu;
         [SerializeField] private ExitMenu exitMenu;
-        [SerializeField] private LoadingScreen loadingScreen;
+        [SerializeField] private FadingLoadingScreen loadingScreen;
         #endregion
         
         
