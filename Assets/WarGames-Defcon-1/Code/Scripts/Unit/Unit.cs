@@ -7,7 +7,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Unit {
                      typeof(WeaponController))]
     public abstract class Unit : MonoBehaviour {
         #region Fields
-
         protected Rigidbody rb;
         [SerializeField] private Transform com;
 

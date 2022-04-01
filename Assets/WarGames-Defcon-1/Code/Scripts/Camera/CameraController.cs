@@ -7,8 +7,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
         [SerializeField] private Cameras currentCamera;
         [SerializeField] private MainCamera mainCamera;
         [SerializeField] private SimpleCamera playerCamera;
-
-        private ICamera activeCamera;
         #endregion
 
 
@@ -24,10 +22,10 @@ namespace WarGames_Defcon_1.Code.Scripts.Camera {
         private void OnValidate() {
             switch (currentCamera) {
                 case Cameras.mainCamera:
-                    SwitchCamera(Cameras.mainCamera);
+                    if (mainCamera != null) SwitchCamera(Cameras.mainCamera);
                     break;
                 case Cameras.playerCamera:
-                    SwitchCamera(Cameras.playerCamera);
+                    if (playerCamera != null) SwitchCamera(Cameras.playerCamera);
                     break;
             }
         }

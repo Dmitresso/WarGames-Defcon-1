@@ -3,12 +3,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using WarGames_Defcon_1.Code.ScriptableObjects;
 
 
 namespace WarGames_Defcon_1.Code.Scripts.Input {
     [DisallowMultipleComponent]
     public abstract class BaseInput : MonoBehaviour {
         #region FIELDS
+        [SerializeField] protected ScenesData scenesData;
         [SerializeField] private ActionMap currentActionMap = ActionMap.Player;
         [SerializeField] protected bool oneAttackHeld = true;
         [Range(minDelay, maxDelay)] protected float mainAttackDelay = 1f;

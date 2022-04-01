@@ -136,5 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543983053e354239a74648fda5ecdfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenesData: {fileID: 11400000, guid: 36a50ae3c1a1b3c44b7a941b821d24ed, type: 2}
+  gameSettings: {fileID: 11400000, guid: a5214dd6164133e43b809d74825b17ee, type: 2}
   currentActionMap: 0
   oneAttackHeld: 1

@@ -155,6 +155,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "fcfec516-45ec-4c14-9e8b-10438587e2b7",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Settings Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "AD",
                     "id": "617b9678-cb5c-44c1-80b0-7a8be62cb610",
                     "path": "2DVector",
@@ -367,6 +378,15 @@
                     "type": "PassThrough",
                     "id": "539f8335-73b6-4398-829c-d9073cbbf6bb",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Settings Menu",
+                    "type": "Button",
+                    "id": "122a1bf8-1ed1-4995-93fc-0781eeefb79b",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -788,6 +808,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae37d437-c5e0-4891-a3d6-6d0808440968",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Settings Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

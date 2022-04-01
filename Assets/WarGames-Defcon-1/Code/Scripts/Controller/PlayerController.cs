@@ -134,7 +134,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         protected override void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            
+            if (scene.name == scenesData.mainMenu.name) SwitchActionMap(ActionMap.UI);
         }
         
         

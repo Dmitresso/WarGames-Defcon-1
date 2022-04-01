@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using WarGames_Defcon_1.Code.ScriptableObjects;
-using WarGames_Defcon_1.Code.Scripts.Camera;
 using WarGames_Defcon_1.Code.Scripts.Service;
 using WarGames_Defcon_1.Code.Scripts.Utils;
 
@@ -21,7 +19,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
         private List<GameObject> instancedSystemPrefabs = new ();
         private LevelManager currentLevelManager;
         private GameLevel currentLevel;
-        private ICamera activeCamera;
         #endregion
 
 
@@ -52,14 +49,13 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
 
         #region CUSTOM METHODS
         protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
-            
-            
             if (scene.name == scenesData.mainMenu.name) {
                 
+                return;
             }
 
             var currentLevelManagerGO = FindObjectOfType<LevelManager>();
-            if (currentLevelManagerGO == null) return;
+            if (currentLevelManagerGO == null) Debug.LogError("There's no LevelManager on level scene " + scene.name);
         }
         
         
