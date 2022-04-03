@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameScene: {fileID: 102900000, guid: edcc3472b97bcae4e86cf901d78aed62, type: 3}
   description: 
-  levelUnits: []
+  levelVehicles: []
+  levelObjectives: []
+  levelStats:
+    troops: 0
+    vehicles: 0
+    buildings: 0
   textsENG:
     briefing: {fileID: 4900000, guid: b697bf105abf2f349af3241923500340, type: 3}
     objectives: {fileID: 4900000, guid: 468d64d63de15c7499e6faf7d2baddc1, type: 3}

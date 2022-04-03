@@ -2,6 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 using WarGames_Defcon_1.Code.ScriptableObjects.Containers;
+using WarGames_Defcon_1.Code.Scripts.Level;
 using WarGames_Defcon_1.Code.Scripts.Unit;
 
 
@@ -10,11 +11,11 @@ namespace WarGames_Defcon_1.Code.ScriptableObjects {
     public class GameLevel : ScriptableObject {
         public SceneAsset gameScene;
         public string description;
-        public List<Vehicle> levelUnits;
+        public List<Vehicle> levelVehicles;
+        public List<Objective> levelObjectives;
         public LevelStats levelStats;
-        
-        
-        [Header("ENG text files")] public LevelTexts textsENG;
-        [Header("RU text files")] public LevelTexts textsRU;
+
+        public LevelTexts textsENG;
+        public LevelTexts textsRU;
     }
 }

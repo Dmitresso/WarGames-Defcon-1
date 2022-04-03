@@ -148,7 +148,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
                 if (vehicles[i] != null) {
                     currentUnitIndex = i;
                     CurrentUnit = vehicles[i];
-                    ApplyUnitParams(CurrentUnit);
+                    ApplyVehicleParams(CurrentUnit);
                     Debug.Log("[PlayerController] currentUnit.name: " + CurrentUnit.name);
                     break;
                 }
@@ -164,11 +164,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
                 
             var nextUnit = vehicles[currentUnitIndex];
             if (nextUnit != null && nextUnit.Playable) CurrentUnit = nextUnit;
-            ApplyUnitParams(unit);
+            ApplyVehicleParams(unit);
         }
 
 
-        private void ApplyUnitParams(Unit.Unit unit) {
+        private void ApplyVehicleParams(Vehicle unit) {
             rb = unit.RB;
             transform = unit.transform;
             moveForce = unit.MoveSpeed;

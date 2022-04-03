@@ -25,7 +25,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
 
 
         private void OnEnable() {
-            playerController.Vehicles = levelSO.levelUnits;
+            playerController.Vehicles = levelSO.levelVehicles;
         }
         #endregion
     }
