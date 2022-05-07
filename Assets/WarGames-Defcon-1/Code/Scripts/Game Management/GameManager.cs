@@ -15,7 +15,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
         [SerializeField] private ScenesData scenesData;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private GameObject[] systemPrefabs;
-
+        
         private List<GameObject> instancedSystemPrefabs = new ();
         private LevelManager currentLevelManager;
         private GameLevel currentLevel;
@@ -53,7 +53,7 @@ namespace WarGames_Defcon_1.Code.Scripts.Game_Management {
                 
                 return;
             }
-
+            
             var currentLevelManagerGO = FindObjectOfType<LevelManager>();
             if (currentLevelManagerGO == null) Debug.LogError("There's no LevelManager on level scene " + scene.name);
         }

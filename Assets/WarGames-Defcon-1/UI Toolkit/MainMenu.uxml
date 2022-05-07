@@ -1,0 +1,44 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="MainVE" style="height: 100%; width: 100%; flex-direction: column; align-items: center; justify-content: space-between; display: none; opacity: 1; visibility: visible; position: relative; max-width: 1920px; max-height: 1080px; min-height: 720px; min-width: 1280px; top: 0; left: 0; -unity-text-align: middle-center;">
+        <ui:VisualElement name="LogoVE" style="left: 15%; top: 10%; right: 15%; bottom: 65%; position: absolute;">
+            <ui:Label text="WarGames" display-tooltip-when-elided="true" name="WarGamesLabel" style="position: absolute; left: 0; top: 0; right: 0; bottom: 30%; -unity-text-align: middle-center; -unity-font: none; opacity: 1; display: flex; font-size: 200%;" />
+            <ui:Label text="Defcon1" display-tooltip-when-elided="true" name="Defcon1Label" style="position: absolute; left: 0; top: 70%; right: 0; bottom: 0; -unity-text-align: middle-center; -unity-font: none; opacity: 1; font-size: 50%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GameTypeVE" style="position: absolute; left: 5%; top: 35%; right: 75%; bottom: 35%;">
+            <ui:VisualElement name="FractionLogoVE" style="left: 0; top: 0; right: 0; bottom: 20%; position: absolute;" />
+            <ui:Label text="GameTypeText" display-tooltip-when-elided="true" name="GameTypeLabel" style="font-size: 40%; left: 0; top: 80%; right: 0; bottom: 0; position: absolute; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ButtonsVE" style="left: 25%; top: 35%; right: 25%; bottom: 35%; position: absolute;">
+            <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" style="left: 15%; top: 10%; right: 15%; bottom: 55%; position: absolute; font-size: 100%;" />
+            <ui:Button text="Options" display-tooltip-when-elided="true" name="OptionsButton" style="position: absolute; left: 15%; top: 55%; right: 15%; bottom: 10%; font-size: 100%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="MissionVE" style="position: absolute; left: 75%; top: 35%; right: 5%; bottom: 35%;">
+            <ui:VisualElement name="MissionLogo" style="left: 0; top: 0; right: 0; bottom: 20%; position: absolute;" />
+            <ui:Label text="Mission 1" display-tooltip-when-elided="true" name="MissionLabel" style="font-size: 40%; left: 0; top: 80%; right: 0; bottom: 0; position: absolute; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SelectVE" style="left: 25%; top: 65%; right: 25%; bottom: 25%; position: absolute;">
+            <ui:Label text="Press &lt;Key&gt; to select" display-tooltip-when-elided="true" name="SelectLabel" style="-unity-text-align: middle-center; left: 0; top: 0; right: 0; bottom: 0; position: absolute; font-size: 30%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="OptionsVE" style="height: 100%; width: 100%; flex-direction: column; align-items: center; justify-content: space-between; display: flex; opacity: 1; visibility: visible; position: relative; max-width: 1920px; max-height: 1080px; min-height: 720px; min-width: 1280px; top: 0; left: 0; -unity-text-align: middle-center;">
+        <ui:VisualElement name="LogoVE" style="left: 15%; top: 10%; right: 15%; bottom: 65%; position: absolute;">
+            <ui:Label text="WarGames" display-tooltip-when-elided="true" name="WarGamesLabel" style="position: absolute; left: 0; top: 0; right: 0; bottom: 30%; -unity-text-align: middle-center; -unity-font: none; opacity: 1; display: flex; font-size: 200%;" />
+            <ui:Label text="Defcon1" display-tooltip-when-elided="true" name="Defcon1Label" style="position: absolute; left: 0; top: 70%; right: 0; bottom: 0; -unity-text-align: middle-center; -unity-font: none; opacity: 1; font-size: 50%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GameTypeVE" style="position: absolute; left: 5%; top: 35%; right: 75%; bottom: 35%; display: flex;">
+            <ui:VisualElement name="FractionLogoVE" style="left: 0; top: 0; right: 0; bottom: 20%; position: absolute;" />
+            <ui:Label text="GameTypeText" display-tooltip-when-elided="true" name="GameTypeLabel" style="font-size: 40%; left: 0; top: 80%; right: 0; bottom: 0; position: absolute; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="ButtonsVE" style="left: 25%; top: 35%; right: 25%; bottom: 35%; position: absolute;">
+            <ui:Button text="Start" display-tooltip-when-elided="true" name="StartButton" style="left: 15%; top: 10%; right: 15%; bottom: 55%; position: absolute; font-size: 100%;" />
+            <ui:Button text="Options" display-tooltip-when-elided="true" name="OptionsButton" style="position: absolute; left: 15%; top: 55%; right: 15%; bottom: 10%; font-size: 100%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="MissionVE" style="position: absolute; left: 75%; top: 35%; right: 5%; bottom: 35%;">
+            <ui:VisualElement name="MissionLogo" style="left: 0; top: 0; right: 0; bottom: 20%; position: absolute;" />
+            <ui:Label text="Mission 1" display-tooltip-when-elided="true" name="MissionLabel" style="font-size: 40%; left: 0; top: 80%; right: 0; bottom: 0; position: absolute; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SelectVE" style="left: 25%; top: 65%; right: 25%; bottom: 25%; position: absolute;">
+            <ui:Label text="Press &lt;Key&gt; to select" display-tooltip-when-elided="true" name="SelectLabel" style="-unity-text-align: middle-center; left: 0; top: 0; right: 0; bottom: 0; position: absolute; font-size: 30%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

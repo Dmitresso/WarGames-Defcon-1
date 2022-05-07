@@ -12,8 +12,7 @@ using WarGames_Defcon_1.Code.Scripts.Utils;
 
 namespace WarGames_Defcon_1.Code.Scripts.Controller {
     [DefaultExecutionOrder(-50)]
-    [RequireComponent(typeof(PlayerInput),
-                     typeof(Animator))]
+    [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : BaseInput {
         #region Fields
         public Action<Vehicle> onUnitChanged;
@@ -25,13 +24,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         private Transform transform;
         private float moveForce;
         private float torqueForce;
-        
-        private Animator animator;
         #endregion
 
 
 
-        #region Properties
+        #region PROPERTIES
         public List<Vehicle> Vehicles {
             set {
                 vehicles = value;
@@ -46,8 +43,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         #region BUILTIN METHODS
         protected void Awake() {
             base.Awake();
-            animator = GetComponent<Animator>();
-
             onUnitChanged += SwitchUnit;
             
             camera = GameObject.FindGameObjectWithTag(Tags.GM.CameraController).GetComponent<CameraController>().PlayerCamera;
@@ -92,7 +87,6 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
 
 
         protected override IEnumerator MainAttack() {
-            Debug.Log("Root: " + transform.root.gameObject.name);
             while (mainAttackHeld) {
                 Debug.Log("[PlayerController] MainAttack");
                 yield return new WaitForSeconds(mainAttackDelay);
@@ -136,8 +130,11 @@ namespace WarGames_Defcon_1.Code.Scripts.Controller {
         protected override void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
             if (scene.name == scenesData.mainMenu.name) SwitchActionMap(ActionMap.UI);
         }
-        
-        
+
+
+        // protected override void OnClickPerform(InputAction.CallbackContext context) { }
+
+
         private void InitUnits(List<Vehicle> vehicles) {
             if (vehicles.Count <= 0) {
                 Debug.LogError("[PlayerController] \"units\" list is empty.");

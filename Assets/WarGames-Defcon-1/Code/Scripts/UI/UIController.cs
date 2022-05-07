@@ -18,6 +18,13 @@ namespace WarGames_Defcon_1.Code.Scripts.UI {
         [SerializeField] private ExitMenu exitMenu;
         [SerializeField] private FadingLoadingScreen loadingScreen;
         #endregion
+
+
+
+        #region BUILTIN METHODS
+        private void Awake() {
+        }
+        #endregion
         
         
         

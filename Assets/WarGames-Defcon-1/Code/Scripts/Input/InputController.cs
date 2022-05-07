@@ -361,7 +361,7 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Click"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""3feef39b-e1bc-469a-a227-0da235e7167e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -412,6 +412,15 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""fcd25558-8f6f-461d-980c-43bf16f58310"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -843,6 +852,17 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                     ""action"": ""Settings Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9898704f-8cba-41dd-b020-3292ba3bb680"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Mouse Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -934,6 +954,7 @@ public partial class @InputController : IInputActionCollection2, IDisposable
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
         m_UI_SettingsMenu = m_UI.FindAction("Settings Menu", throwIfNotFound: true);
+        m_UI_MousePosition = m_UI.FindAction("Mouse Position", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1101,6 +1122,7 @@ public partial class @InputController : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Navigate;
     private readonly InputAction m_UI_SettingsMenu;
+    private readonly InputAction m_UI_MousePosition;
     public struct UIActions
     {
         private @InputController m_Wrapper;
@@ -1116,6 +1138,7 @@ public partial class @InputController : IInputActionCollection2, IDisposable
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @SettingsMenu => m_Wrapper.m_UI_SettingsMenu;
+        public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1158,6 +1181,9 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 @SettingsMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSettingsMenu;
                 @SettingsMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSettingsMenu;
                 @SettingsMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSettingsMenu;
+                @MousePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1195,6 +1221,9 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 @SettingsMenu.started += instance.OnSettingsMenu;
                 @SettingsMenu.performed += instance.OnSettingsMenu;
                 @SettingsMenu.canceled += instance.OnSettingsMenu;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
@@ -1269,5 +1298,6 @@ public partial class @InputController : IInputActionCollection2, IDisposable
         void OnSubmit(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnSettingsMenu(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }
